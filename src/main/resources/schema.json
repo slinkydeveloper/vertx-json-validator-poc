@@ -1,0 +1,21 @@
+{
+  "type": "object",
+  "properties": {
+    "a": {
+      "type": "integer"
+    },
+    "sub": {
+      "type": "object",
+      "properties": {
+        "s": {
+          "type": "string"
+        },
+        "b": {
+          "type": "integer",
+          "maximum": 2.0,
+          "exclusiveMaximum": true
+        }
+      }
+    }
+  }
+}
