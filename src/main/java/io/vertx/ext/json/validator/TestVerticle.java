@@ -2,6 +2,8 @@ package io.vertx.ext.json.validator;
 
 import io.vertx.core.*;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.schema.Schema;
+import io.vertx.ext.json.validator.schema.oas3.OAS3SchemaParser;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -34,7 +36,7 @@ public class TestVerticle extends AbstractVerticle {
         };
         loadJson("schema.json").setHandler(schemaAr -> {
             if (schemaAr.succeeded()) {
-                Schema s = Schema.parse(schemaAr.result());
+                Schema s = Schema.parseOAS3Schema(schemaAr.result(), new OAS3SchemaParser());
                 CompositeFuture
                         .all(loadJson("tests/test.json"), loadJson("tests/test2.json"), loadJson("tests/test3.json"))
                         .setHandler(ar -> {

@@ -1,4 +1,4 @@
-package io.vertx.ext.json.validator;
+package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
@@ -6,9 +6,10 @@ import io.vertx.core.json.JsonObject;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public class StringSchema extends BaseSchema<String> {
-    StringSchema(JsonObject obj) {
-        super(obj);
+public abstract class StringSchema extends BaseSchema<String> {
+
+    public StringSchema(JsonObject obj, SchemaParser parser) {
+        super(obj, parser);
     }
 
     @Override

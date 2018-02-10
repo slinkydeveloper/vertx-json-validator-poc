@@ -1,4 +1,4 @@
-package io.vertx.ext.json.validator;
+package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
@@ -15,19 +15,55 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
   private Double minimum = null;
   private Double multipleOf = null;
 
-  public NumberSchema(JsonObject jsonObject) {
-    super(jsonObject);
-    try {
-      assignProperty("exclusiveMaximum", NumberSchema.class);
-      assignProperty("maximum", NumberSchema.class);
-      assignProperty("exclusiveMinimum", NumberSchema.class);
-      assignProperty("minimum", NumberSchema.class);
-      assignProperty("multipleOf", NumberSchema.class);
-    } catch (NoSuchFieldException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    }
+
+
+  public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
+    super(jsonObject, parser);
+    assignBoolean("exclusiveMaximum");
+    assignDouble("maximum");
+    assignBoolean("exclusiveMinimum");
+    assignDouble("minimum");
+    assignDouble("multipleOf");
+  }
+
+  public Boolean getExclusiveMaximum() {
+    return exclusiveMaximum;
+  }
+
+  public void setExclusiveMaximum(Boolean exclusiveMaximum) {
+    this.exclusiveMaximum = exclusiveMaximum;
+  }
+
+  public Double getMaximum() {
+    return maximum;
+  }
+
+  public void setMaximum(Double maximum) {
+    this.maximum = maximum;
+  }
+
+  public Boolean getExclusiveMinimum() {
+    return exclusiveMinimum;
+  }
+
+  public void setExclusiveMinimum(Boolean exclusiveMinimum) {
+    this.exclusiveMinimum = exclusiveMinimum;
+  }
+
+  public Double getMinimum() {
+    return minimum;
+  }
+
+  public void setMinimum(Double minimum) {
+    this.minimum = minimum;
+  }
+
+  public Double getMultipleOf() {
+    return multipleOf;
+  }
+
+  public void setMultipleOf(Double multipleOf) {
+    this.multipleOf = multipleOf;
   }
 
   private void checkMaximum(double val) {
