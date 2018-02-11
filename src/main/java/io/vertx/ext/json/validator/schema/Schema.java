@@ -7,6 +7,8 @@ import io.vertx.ext.json.validator.schema.oas3.OAS3ObjectSchema;
 import io.vertx.ext.json.validator.schema.oas3.OAS3StringSchema;
 import io.vertx.ext.web.api.validation.ValidationException;
 
+import java.lang.reflect.Constructor;
+
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
@@ -14,7 +16,7 @@ public interface Schema<T> {
 
     Future<T> validate(Object obj);
 
-    public Class getRequiredType();
+    Class getRequiredType();
 
     default T checkType(Object obj) {
         if (obj.getClass().equals(getRequiredType())) {
@@ -25,13 +27,15 @@ public interface Schema<T> {
     }
 
     static Schema parseOAS3Schema(JsonObject jsonObject, SchemaParser parser) {
-        // Only one type allowed in OAS 3!
-        String type = parser.solveTypes(jsonObject).get(0);
-        switch (type) {
-            case "object": return new OAS3ObjectSchema(jsonObject, parser);
-            case "integer": return new OAS3IntegerSchema(jsonObject, parser);
-            case "string": return new OAS3StringSchema(jsonObject, parser);
-            default: return new OAS3StringSchema(jsonObject, parser);
+        try {
+            Class<? extends Schema> schemaClass = parser.solveType(jsonObject);
+            Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class);
+            return constructor.newInstance(jsonObject, parser);
+        } catch (Exception e) {
+            // Big exception caused by idiot dev
+            System.out.println("Dev missed something important " + e);
+            e.printStackTrace();
+            return null;
         }
     }
 

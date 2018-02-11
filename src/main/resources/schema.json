@@ -4,6 +4,10 @@
     "a": {
       "type": "integer"
     },
+    "b": {
+      "type": "number",
+      "format": "float"
+    },
     "sub": {
       "type": "object",
       "properties": {
@@ -12,6 +16,7 @@
         },
         "b": {
           "type": "integer",
+          "format": "long",
           "maximum": 2.0,
           "exclusiveMaximum": true
         }

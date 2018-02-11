@@ -38,8 +38,12 @@ public class TestVerticle extends AbstractVerticle {
             if (schemaAr.succeeded()) {
                 Schema s = Schema.parseOAS3Schema(schemaAr.result(), new OAS3SchemaParser());
                 CompositeFuture
-                        .all(loadJson("tests/test.json"), loadJson("tests/test2.json"), loadJson("tests/test3.json"))
-                        .setHandler(ar -> {
+                        .all(
+                                loadJson("tests/test.json"),
+                                loadJson("tests/test2.json"),
+                                loadJson("tests/test3.json"),
+                                loadJson("tests/test4.json")
+                        ).setHandler(ar -> {
                             if (ar.succeeded()) {
                                 ar.result().list().forEach(obj -> s.validate(obj).setHandler(validationHandler));
                             } else {

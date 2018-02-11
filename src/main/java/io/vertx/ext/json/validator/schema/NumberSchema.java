@@ -4,6 +4,8 @@ import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.api.validation.ValidationException;
 
+import java.util.List;
+
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
@@ -106,5 +108,4 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
       return Future.failedFuture(e);
     }
   }
-
 }
