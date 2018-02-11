@@ -19,7 +19,7 @@ public interface Schema<T> {
         if (obj.getClass().equals(getRequiredType())) {
             return (T)obj;
         } else {
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
+            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
         }
     }
 

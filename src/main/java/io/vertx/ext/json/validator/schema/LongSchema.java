@@ -25,7 +25,7 @@ public abstract class LongSchema extends NumberSchema<Long> {
         else if (obj instanceof Integer) {
             return ((Integer)obj).longValue();
         } else {
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
+            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
         }
     }
 }

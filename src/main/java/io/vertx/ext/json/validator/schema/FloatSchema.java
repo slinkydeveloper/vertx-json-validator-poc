@@ -25,7 +25,7 @@ public abstract class FloatSchema extends NumberSchema<Float> {
         else if (obj instanceof Double) {
             return ((Double)obj).floatValue();
         } else {
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
+            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
         }
     }
 }

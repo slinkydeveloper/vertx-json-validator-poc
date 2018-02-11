@@ -43,7 +43,7 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
                 return e.getValue().validate(v).map(res -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), res));
             } else {
                 return Future.failedFuture(ValidationExceptionFactory
-                        .generateNotMatchValidationException("Param required but not found")
+                        .generateNotMatchValidationException("Param " + e.getKey() + " required but not found")
                 );
             }
         };
