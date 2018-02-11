@@ -2,8 +2,11 @@ package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.NumberSchema;
+import io.vertx.ext.json.validator.schema.RegularExpressions;
 import io.vertx.ext.json.validator.schema.Schema;
 import io.vertx.ext.json.validator.schema.SchemaParser;
+
+import java.util.regex.Pattern;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -37,5 +40,27 @@ public class OAS3SchemaParser extends SchemaParser {
     @Override
     public Class<? extends Schema> inferType(JsonObject obj) {
         return OAS3StringSchema.class; // This should be replaced with type guessing logic
+    }
+
+    @Override
+    public Pattern parseFormat(String format) {
+        switch (format) {
+            case "binary":
+                return null;
+            case "byte":
+                return RegularExpressions.BASE64;
+            case "date":
+                return RegularExpressions.DATE;
+            case "date-time":
+                return RegularExpressions.DATETIME;
+            case "ipv4":
+                return RegularExpressions.IPV4;
+            case "ipv6":
+                return RegularExpressions.IPV6;
+            case "hostname":
+                return RegularExpressions.HOSTNAME;
+            default:
+                return null; // Should throw an exception
+        }
     }
 }

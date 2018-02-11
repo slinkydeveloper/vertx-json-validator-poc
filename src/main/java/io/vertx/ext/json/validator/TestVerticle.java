@@ -41,7 +41,8 @@ public class TestVerticle extends AbstractVerticle {
                                 loadJson("tests/test.json"),
                                 loadJson("tests/test2.json"),
                                 loadJson("tests/test3.json"),
-                                loadJson("tests/test4.json")
+                                loadJson("tests/test4.json"),
+                                loadJson("tests/test5.json")
                         ).setHandler(ar -> {
                             if (ar.succeeded()) {
                                 ar.result().list().forEach(obj -> s.validate(obj).setHandler(validationHandler));

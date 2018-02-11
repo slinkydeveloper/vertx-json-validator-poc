@@ -5,6 +5,7 @@ import io.vertx.core.json.JsonObject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.function.Function;
+import java.util.regex.Pattern;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -18,13 +19,14 @@ public abstract class SchemaParser {
 
     <T, R> void assignProperty(JsonObject jsonObject, Function<JsonObject, T> extractProperty, String fieldName, Class fieldType, Function<T, R> map, Class instanceType, Object instance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         T propertyValue = extractProperty.apply(jsonObject);
-        if (map != null) {
-            R transformedValue = map.apply(propertyValue);
-            if (transformedValue != null)
-                invokeSetter(fieldName, fieldType, instanceType, instance, transformedValue);
-        }
-        else if (propertyValue != null) {
-            invokeSetter(fieldName, fieldType, instanceType, instance, propertyValue);
+        if (propertyValue != null) {
+            if (map != null) {
+                R transformedValue = map.apply(propertyValue);
+                if (transformedValue != null)
+                    invokeSetter(fieldName, fieldType, instanceType, instance, transformedValue);
+            } else {
+                invokeSetter(fieldName, fieldType, instanceType, instance, propertyValue);
+            }
         }
     }
 
@@ -33,4 +35,7 @@ public abstract class SchemaParser {
 
     // When type is missing you should infer type from schema, and again this is different between specs
     public abstract Class<? extends Schema> inferType(JsonObject obj);
+
+    // format keyword is different between oas and json schema specs
+    public abstract Pattern parseFormat(String format);
 }

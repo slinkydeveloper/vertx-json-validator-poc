@@ -32,6 +32,19 @@ public abstract class BaseSchema<T> implements Schema<T> {
         this.assignDouble(propertyName, propertyName);
     }
 
+    void assignInteger(String propertyName, String fieldName) {
+        try {
+            parser.assignProperty(this.originalJson, jsonObject -> jsonObject.getInteger(propertyName), fieldName, Integer.class, null, this.getClass(), this);
+        } catch (Exception e) {
+            System.err.println("Unexpected Exception " + e);
+            e.printStackTrace();
+        }
+    }
+
+    void assignInteger(String propertyName) {
+        this.assignInteger(propertyName, propertyName);
+    }
+
     void assignBoolean(String propertyName, String fieldName) {
         try {
             parser.assignProperty(this.originalJson, jsonObject -> jsonObject.getBoolean(propertyName), fieldName, Boolean.class, null, this.getClass(), this);
@@ -48,6 +61,15 @@ public abstract class BaseSchema<T> implements Schema<T> {
     <R> void assignObject(String propertyName, String fieldName, Class fieldType, Function<JsonObject, R> map) {
         try {
             parser.assignProperty(originalJson, jsonObject -> jsonObject.getJsonObject(propertyName), fieldName, fieldType, map, this.getClass(), this);
+        } catch (Exception e) {
+            System.err.println("Unexpected Exception " + e);
+            e.printStackTrace();
+        }
+    }
+
+    <R> void manipulateAndAssign(Function<JsonObject, String> propertyGetter, String fieldName, Class fieldType, Function<String, R> map) {
+        try {
+            parser.assignProperty(originalJson, propertyGetter, fieldName, fieldType, map, this.getClass(), this);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();

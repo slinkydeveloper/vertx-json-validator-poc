@@ -12,7 +12,8 @@
       "type": "object",
       "properties": {
         "s": {
-          "type": "string"
+          "type": "string",
+          "pattern": "[a-zA-Z]{3}"
         },
         "b": {
           "type": "integer",
