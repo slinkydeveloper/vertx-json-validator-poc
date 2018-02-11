@@ -2,10 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.json.validator.schema.oas3.OAS3IntegerSchema;
-import io.vertx.ext.json.validator.schema.oas3.OAS3ObjectSchema;
-import io.vertx.ext.json.validator.schema.oas3.OAS3StringSchema;
-import io.vertx.ext.web.api.validation.ValidationException;
+import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.lang.reflect.Constructor;
 
@@ -22,7 +19,7 @@ public interface Schema<T> {
         if (obj.getClass().equals(getRequiredType())) {
             return (T)obj;
         } else {
-            throw ValidationException.ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
+            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
         }
     }
 

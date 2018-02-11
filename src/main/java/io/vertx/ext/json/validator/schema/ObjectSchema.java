@@ -3,7 +3,7 @@ package io.vertx.ext.json.validator.schema;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.api.validation.ValidationException;
+import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.*;
 import java.util.function.Function;
@@ -42,8 +42,7 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
             if (v != null) {
                 return e.getValue().validate(v).map(res -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), res));
             } else {
-                return Future.failedFuture(ValidationException
-                        .ValidationExceptionFactory
+                return Future.failedFuture(ValidationExceptionFactory
                         .generateNotMatchValidationException("Param required but not found")
                 );
             }

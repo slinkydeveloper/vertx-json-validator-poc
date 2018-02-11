@@ -1,7 +1,7 @@
 package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.web.api.validation.ValidationException;
+import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -25,7 +25,7 @@ public abstract class FloatSchema extends NumberSchema<Float> {
         else if (obj instanceof Double) {
             return ((Double)obj).floatValue();
         } else {
-            throw ValidationException.ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
+            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type");
         }
     }
 }

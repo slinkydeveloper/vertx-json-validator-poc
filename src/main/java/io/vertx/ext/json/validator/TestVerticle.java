@@ -8,7 +8,6 @@ import io.vertx.ext.json.validator.schema.oas3.OAS3SchemaParser;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
