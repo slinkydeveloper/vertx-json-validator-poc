@@ -73,7 +73,7 @@ public class OAS3SchemaParser extends SchemaParser {
     }
 
     @Override
-    public <T> PreValidationSchema buildPreValidationLogic(JsonObject jsonSchema, SchemaInternal<T> schema) {
+    public <T> PreValidationSchema buildPreValidationLogic(JsonObject jsonSchema, BaseSchema<T> schema) {
         return new OAS3PreValidationSchema(jsonSchema, this, schema);
     }
 

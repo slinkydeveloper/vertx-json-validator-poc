@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.Optional;
 import java.util.function.Function;
@@ -9,7 +10,7 @@ import java.util.function.Function;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class BaseSchema<T> extends ReflectedSchema implements SchemaInternal<T> {
+public abstract class BaseSchema<T> extends ReflectedSchema implements Schema<T> {
 
     PreValidationSchema preValidationSchema;
     Function<Object, Future<T>> validationFunction;
@@ -37,5 +38,18 @@ public abstract class BaseSchema<T> extends ReflectedSchema implements SchemaInt
     @Override
     public Future<T> validate(Object obj) {
         return this.validationFunction.apply(obj);
+    }
+
+    abstract Class<T> getRequiredType();
+
+    abstract Future<T> validationLogic(T obj);
+
+    T checkType(Object obj) {
+        if (obj.getClass().equals(getRequiredType())) {
+            return (T)obj;
+        } else {
+            throw ValidationExceptionFactory
+                    .generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
+        }
     }
 }

@@ -17,7 +17,7 @@ public abstract class PreValidationSchema extends ReflectedSchema {
 
     Object defaultValue;
 
-    public <T> PreValidationSchema(JsonObject obj, SchemaParser parser, SchemaInternal<T> schema) {
+    public <T> PreValidationSchema(JsonObject obj, SchemaParser parser, BaseSchema<T> schema) {
         super(obj, parser);
         if (originalJson.containsKey("default"))
             this.setDefaultValue(schema.checkType(originalJson.getValue("default")));

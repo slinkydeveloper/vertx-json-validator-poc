@@ -2,8 +2,8 @@ package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
+import io.vertx.ext.json.validator.schema.BaseSchema;
 import io.vertx.ext.json.validator.schema.PreValidationSchema;
-import io.vertx.ext.json.validator.schema.SchemaInternal;
 import io.vertx.ext.json.validator.schema.SchemaParser;
 import io.vertx.ext.json.validator.schema.ValidationStep;
 
@@ -16,7 +16,7 @@ public class OAS3PreValidationSchema extends PreValidationSchema {
 
     Boolean nullable;
 
-    public <T> OAS3PreValidationSchema(JsonObject obj, SchemaParser parser, SchemaInternal<T> schema) {
+    public <T> OAS3PreValidationSchema(JsonObject obj, SchemaParser parser, BaseSchema<T> schema) {
         super(obj, parser, schema);
         assignBoolean("nullable");
     }
