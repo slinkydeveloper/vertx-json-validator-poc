@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator;
 
 import io.vertx.core.*;
+import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.Schema;
 import io.vertx.ext.json.validator.schema.oas3.OAS3SchemaParser;
@@ -8,10 +9,24 @@ import io.vertx.ext.json.validator.schema.oas3.OAS3SchemaParser;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
 public class TestVerticle extends AbstractVerticle {
+
+    private Handler<AsyncResult<Object>> validationHandler(String file) {
+        return ar -> {
+            if (ar.failed() && !(ar.cause() instanceof ValidationException))
+                ar.cause().printStackTrace();
+            System.out.println("file: " +
+                    file.substring(file.lastIndexOf("/") + 1) +
+                    " result: " +
+                    ((ar.succeeded()) ? ar.result() : ar.cause()));
+        };
+    }
 
     private Future<JsonObject> loadJson(String path) {
         Future<JsonObject> f = Future.future();
@@ -25,33 +40,24 @@ public class TestVerticle extends AbstractVerticle {
         return f;
     }
 
+    private Future loadJsonAndValidate(String path, Schema s) {
+        return loadJson(path).compose((res) -> s.validate(res));
+    }
+
     @Override
     public void start() {
-        Handler<AsyncResult<Object>> validationHandler = ar -> {
-            if (ar.succeeded())
-                System.out.println(ar.result());
-            else
-                System.out.println(ar.cause());
-        };
-        loadJson("schema.json").setHandler(schemaAr -> {
-            if (schemaAr.succeeded()) {
-                Schema s = Schema.parseOAS3Schema(schemaAr.result(), new OAS3SchemaParser());
-                CompositeFuture
-                        .all(
-                                loadJson("tests/test.json"),
-                                loadJson("tests/test2.json"),
-                                loadJson("tests/test3.json"),
-                                loadJson("tests/test4.json"),
-                                loadJson("tests/test5.json")
-                        ).setHandler(ar -> {
-                            if (ar.succeeded()) {
-                                ar.result().list().forEach(obj -> s.validate(obj).setHandler(validationHandler));
-                            } else {
-                                System.out.println(ar.cause());
-                            }
-                        });
+        vertx.fileSystem().readDir("tests", event -> {
+            if (event.succeeded()) {
+                loadJson("schema.json").setHandler(schemaAr -> {
+                    if (schemaAr.succeeded()) {
+                        Schema s = Schema.parseOAS3Schema(schemaAr.result(), new OAS3SchemaParser());
+                        event.result().stream().forEach((f) -> loadJsonAndValidate(f, s).setHandler(validationHandler(f)));
+                    } else {
+                        System.out.println(schemaAr.cause());
+                    }
+                });
             } else {
-                System.out.println(schemaAr.cause());
+                System.err.println("You dumb " + event.cause());
             }
         });
 

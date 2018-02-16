@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.schema.BaseSchema;
 import io.vertx.ext.json.validator.schema.ObjectSchema;
 import io.vertx.ext.json.validator.schema.Schema;
 import io.vertx.ext.json.validator.schema.SchemaParser;
@@ -17,7 +18,7 @@ public class OAS3ObjectSchema extends ObjectSchema {
     }
 
     @Override
-    protected Schema parseProperty(JsonObject object) {
-        return Schema.parseOAS3Schema(object, this.parser);
+    protected BaseSchema parseProperty(JsonObject object) {
+        return (BaseSchema) Schema.parseOAS3Schema(object, this.parser);
     }
 }

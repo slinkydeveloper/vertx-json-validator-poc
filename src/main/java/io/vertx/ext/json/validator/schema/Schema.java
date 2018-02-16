@@ -13,24 +13,14 @@ public interface Schema<T> {
 
     Future<T> validate(Object obj);
 
-    Class getRequiredType();
-
-    default T checkType(Object obj) {
-        if (obj.getClass().equals(getRequiredType())) {
-            return (T)obj;
-        } else {
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
-        }
-    }
-
     static Schema parseOAS3Schema(JsonObject jsonObject, SchemaParser parser) {
         try {
             Class<? extends Schema> schemaClass = parser.solveType(jsonObject);
             Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class);
             return constructor.newInstance(jsonObject, parser);
         } catch (Exception e) {
-            // Big exception caused by idiot dev
-            System.out.println("Dev missed something important " + e);
+            // Something happened during schema instantiation (wrong schema)
+            System.out.println("Wrong schema! " + e);
             e.printStackTrace();
             return null;
         }

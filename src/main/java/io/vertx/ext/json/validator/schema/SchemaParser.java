@@ -38,4 +38,8 @@ public abstract class SchemaParser {
 
     // format keyword is different between oas and json schema specs
     public abstract Pattern parseFormat(String format);
+
+    public abstract <T> PreValidationSchema buildPreValidationLogic(JsonObject jsonSchema, SchemaInternal<T> schema);
+
+    public abstract PostValidationSchema buildPostValidationLogic(JsonObject schema);
 }

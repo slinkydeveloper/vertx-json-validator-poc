@@ -5,6 +5,10 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.regex.Pattern;
 
 /**
@@ -16,6 +20,8 @@ public abstract class StringSchema extends BaseSchema<String> {
     private Integer minLength;
     private Integer maxLength;
 
+    private Optional<Consumer<String>> checkStringProperties;
+
     public StringSchema(JsonObject obj, SchemaParser parser) {
         super(obj, parser);
         if (obj.containsKey("format"))
@@ -24,6 +30,8 @@ public abstract class StringSchema extends BaseSchema<String> {
             manipulateAndAssign(s -> s.getString("pattern"), "pattern", Pattern.class, Pattern::compile);
         assignInteger("minLength");
         assignInteger("maxLength");
+
+        this.checkStringProperties = buildCheckStringProperties();
     }
 
     public Pattern getPattern() {
@@ -51,27 +59,36 @@ public abstract class StringSchema extends BaseSchema<String> {
     }
 
     private void checkMinLength(String value) {
-        if (minLength != null && !(value.length() >= minLength))
+        if (!(value.length() >= minLength))
             throw ValidationExceptionFactory.generateNotMatchValidationException("String should have min length of " + minLength);
     }
 
     private void checkMaxLength(String value) {
-        if (maxLength != null && !(value.length() <= maxLength))
+        if (!(value.length() <= maxLength))
             throw ValidationExceptionFactory.generateNotMatchValidationException("String should have max length of " + maxLength);
     }
 
     private void checkPattern(String value) {
-        if (pattern != null && !pattern.matcher(value).matches())
+        if (!pattern.matcher(value).matches())
             throw ValidationExceptionFactory.generateNotMatchValidationException("String should match pattern " + pattern);
     }
 
+    private Optional<Consumer<String>> buildCheckStringProperties() {
+        List<Consumer<String>> checkers = new ArrayList<>();
+        if (this.getPattern() != null)
+            checkers.add(this::checkPattern);
+        if (this.getMaxLength() != null)
+            checkers.add(this::checkMaxLength);
+        if (this.getMinLength() != null)
+            checkers.add(this::checkMinLength);
+
+        return Utils.composeCheckers(checkers);
+    }
+
     @Override
-    public Future<String> validate(Object obj) {
+    public Future<String> validationLogic(String s) {
         try {
-            String s = checkType(obj);
-            checkMinLength(s);
-            checkMaxLength(s);
-            checkPattern(s);
+            checkStringProperties.ifPresent(f -> f.accept(s));
             return Future.succeededFuture(s);
         } catch (ValidationException e) {
             return Future.failedFuture(e);

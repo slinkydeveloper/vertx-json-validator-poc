@@ -5,6 +5,11 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Consumer;
+
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
@@ -16,7 +21,7 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
   private Double minimum = null;
   private Double multipleOf = null;
 
-
+  private Optional<Consumer<Number>> checkNumberProperties;
 
   public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
     super(jsonObject, parser);
@@ -25,6 +30,8 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
     assignBoolean("exclusiveMinimum");
     assignDouble("minimum");
     assignDouble("multipleOf");
+
+    this.checkNumberProperties = buildCheckNumberProperties();
   }
 
   public Boolean getExclusiveMaximum() {
@@ -67,41 +74,54 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
     this.multipleOf = multipleOf;
   }
 
-  private void checkMaximum(double val) {
-    if (this.maximum != null) {
-      if (this.exclusiveMaximum != null && this.exclusiveMaximum && !(val < maximum))
-        throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + this.maximum);
-      else if (!(val <= maximum))
-        throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be <= " + this.maximum);
-    }
+  private Consumer<Double> buildCheckMaximum() {
+    if (this.exclusiveMaximum != null && this.exclusiveMaximum)
+      return (val) -> {
+        if (!(val < maximum))
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + this.maximum);
+      };
+    else
+      return (val) -> {
+        if (!(val <= maximum))
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be <= " + this.maximum);
+      };
   }
 
-  private void checkMinimum(double val) {
-    if (this.minimum != null) {
-      if (this.exclusiveMinimum != null && exclusiveMinimum && !(val > minimum))
-        throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + this.minimum);
-      else if (!(val >= minimum))
-        throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be >= " + this.minimum);
-    }
+  private Consumer<Double> buildCheckMinimum() {
+    if (this.exclusiveMinimum != null && this.exclusiveMinimum)
+      return (val) -> {
+        if (!(val > minimum))
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + this.minimum);
+      };
+    else
+      return (val) -> {
+        if (!(val >= minimum))
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be >= " + this.minimum);
+      };
   }
 
   private void checkMultipleOf(double val) {
-    if (multipleOf != null && !(val % multipleOf == 0))
+    if (!(val % multipleOf == 0))
       throw ValidationExceptionFactory.generateNotMatchValidationException(
               "Number should be multipleOf " + this.multipleOf);
   }
 
-  private void checkNumberProperties(Number number) {
-    double val = number.doubleValue();
-    checkMaximum(val);
-    checkMinimum(val);
-    checkMultipleOf(val);
+  private Optional<Consumer<Number>> buildCheckNumberProperties() {
+    List<Consumer<Double>> checkers = new ArrayList<>();
+    if (this.getMinimum() != null)
+      checkers.add(this.buildCheckMaximum());
+    if (this.getMaximum() != null)
+      checkers.add(this.buildCheckMaximum());
+    if (this.getMultipleOf() != null)
+      checkers.add(this::checkMultipleOf);
+
+    return Utils.composeCheckers(checkers).map((c) -> Utils.applyAndAccept(Number::doubleValue, c));
   }
 
-  public Future<T> validate(Object obj) {
+  @Override
+  public Future<T> validationLogic(T n) {
     try {
-      T n = checkType(obj);
-      checkNumberProperties(n);
+      checkNumberProperties.ifPresent(fn -> fn.accept(n));
       return Future.succeededFuture(n);
     } catch (ValidationException e) {
       return Future.failedFuture(e);

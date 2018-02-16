@@ -2,11 +2,13 @@
   "type": "object",
   "properties": {
     "a": {
-      "type": "integer"
+      "type": "integer",
+      "nullable": true
     },
     "b": {
       "type": "number",
-      "format": "float"
+      "format": "float",
+      "default": 25.4
     },
     "sub": {
       "type": "object",

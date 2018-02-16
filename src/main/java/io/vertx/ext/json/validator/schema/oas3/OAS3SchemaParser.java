@@ -1,10 +1,7 @@
 package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.json.validator.schema.NumberSchema;
-import io.vertx.ext.json.validator.schema.RegularExpressions;
-import io.vertx.ext.json.validator.schema.Schema;
-import io.vertx.ext.json.validator.schema.SchemaParser;
+import io.vertx.ext.json.validator.schema.*;
 
 import java.util.regex.Pattern;
 
@@ -27,19 +24,28 @@ public class OAS3SchemaParser extends SchemaParser {
         if (type == null) {
             return this.inferType(obj);
         } else {
-            switch (type) {
-                case "integer": return solveIntegerType(obj);
-                case "number": return solveFloatingPointType(obj);
-                case "string": return OAS3StringSchema.class;
-                case "object": return OAS3ObjectSchema.class;
-                default: return OAS3StringSchema.class; // Should throw an error here!
+            if (obj.containsKey("enum")) {
+                return OAS3EnumSchema.class;
+            } else {
+                switch (type) {
+                    case "integer":
+                        return solveIntegerType(obj);
+                    case "number":
+                        return solveFloatingPointType(obj);
+                    case "string":
+                        return OAS3StringSchema.class;
+                    case "object":
+                        return OAS3ObjectSchema.class;
+                    default:
+                        return OAS3StringSchema.class; // Should throw an error here!
+                }
             }
         }
     }
 
     @Override
     public Class<? extends Schema> inferType(JsonObject obj) {
-        return OAS3StringSchema.class; // This should be replaced with type guessing logic
+        return OAS3StringSchema.class; //TODO This should be replaced with type guessing logic
     }
 
     @Override
@@ -59,8 +65,20 @@ public class OAS3SchemaParser extends SchemaParser {
                 return RegularExpressions.IPV6;
             case "hostname":
                 return RegularExpressions.HOSTNAME;
+            case "email":
+                return RegularExpressions.EMAIL;
             default:
                 return null; // Should throw an exception
         }
+    }
+
+    @Override
+    public <T> PreValidationSchema buildPreValidationLogic(JsonObject jsonSchema, SchemaInternal<T> schema) {
+        return new OAS3PreValidationSchema(jsonSchema, this, schema);
+    }
+
+    @Override
+    public PostValidationSchema buildPostValidationLogic(JsonObject schema) {
+        return new OAS3PostValidationSchema(schema, this);
     }
 }
