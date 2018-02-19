@@ -15,9 +15,7 @@ import java.util.function.Consumer;
  */
 public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
 
-  private Boolean exclusiveMaximum = null;
   private Double maximum = null;
-  private Boolean exclusiveMinimum = null;
   private Double minimum = null;
   private Double multipleOf = null;
 
@@ -25,21 +23,11 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
 
   public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
     super(jsonObject, parser);
-    assignBoolean("exclusiveMaximum");
     assignDouble("maximum");
-    assignBoolean("exclusiveMinimum");
     assignDouble("minimum");
     assignDouble("multipleOf");
 
-    this.checkNumberProperties = buildCheckNumberProperties();
-  }
-
-  public Boolean getExclusiveMaximum() {
-    return exclusiveMaximum;
-  }
-
-  public void setExclusiveMaximum(Boolean exclusiveMaximum) {
-    this.exclusiveMaximum = exclusiveMaximum;
+    this.checkNumberProperties = buildCheckNumberProperties(getOriginalJson().getBoolean("exclusiveMaximum"), getOriginalJson().getBoolean("exclusiveMinimum"));
   }
 
   public Double getMaximum() {
@@ -48,14 +36,6 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
 
   public void setMaximum(Double maximum) {
     this.maximum = maximum;
-  }
-
-  public Boolean getExclusiveMinimum() {
-    return exclusiveMinimum;
-  }
-
-  public void setExclusiveMinimum(Boolean exclusiveMinimum) {
-    this.exclusiveMinimum = exclusiveMinimum;
   }
 
   public Double getMinimum() {
@@ -74,8 +54,8 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
     this.multipleOf = multipleOf;
   }
 
-  private Consumer<Double> buildCheckMaximum() {
-    if (this.exclusiveMaximum != null && this.exclusiveMaximum)
+  private Consumer<Double> buildCheckMaximum(Boolean exclusiveMaximum) {
+    if (exclusiveMaximum != null && exclusiveMaximum)
       return (val) -> {
         if (!(val < maximum))
           throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + this.maximum);
@@ -87,8 +67,8 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
       };
   }
 
-  private Consumer<Double> buildCheckMinimum() {
-    if (this.exclusiveMinimum != null && this.exclusiveMinimum)
+  private Consumer<Double> buildCheckMinimum(Boolean exclusiveMinimum) {
+    if (exclusiveMinimum != null && exclusiveMinimum)
       return (val) -> {
         if (!(val > minimum))
           throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + this.minimum);
@@ -106,12 +86,12 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
               "Number should be multipleOf " + this.multipleOf);
   }
 
-  private Optional<Consumer<Number>> buildCheckNumberProperties() {
+  private Optional<Consumer<Number>> buildCheckNumberProperties(Boolean exclusiveMaximum, Boolean exclusiveMinimum) {
     List<Consumer<Double>> checkers = new ArrayList<>();
     if (this.getMinimum() != null)
-      checkers.add(this.buildCheckMaximum());
+      checkers.add(this.buildCheckMinimum(exclusiveMaximum));
     if (this.getMaximum() != null)
-      checkers.add(this.buildCheckMaximum());
+      checkers.add(this.buildCheckMaximum(exclusiveMinimum));
     if (this.getMultipleOf() != null)
       checkers.add(this::checkMultipleOf);
 
