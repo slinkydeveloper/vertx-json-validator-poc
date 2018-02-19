@@ -16,9 +16,4 @@ public class OAS3ObjectSchema extends ObjectSchema {
     public OAS3ObjectSchema(JsonObject schema, SchemaParser parser) {
         super(schema, parser);
     }
-
-    @Override
-    protected BaseSchema parseProperty(JsonObject object) {
-        return (BaseSchema) Schema.parseOAS3Schema(object, this.parser);
-    }
 }

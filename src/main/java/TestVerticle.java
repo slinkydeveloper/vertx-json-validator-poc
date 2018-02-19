@@ -1,16 +1,12 @@
 package io.vertx.ext.json.validator;
 
 import io.vertx.core.*;
-import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.Schema;
-import io.vertx.ext.json.validator.schema.oas3.OAS3SchemaParser;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.nio.charset.Charset;
-import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -50,7 +46,7 @@ public class TestVerticle extends AbstractVerticle {
             if (event.succeeded()) {
                 loadJson("schema.json").setHandler(schemaAr -> {
                     if (schemaAr.succeeded()) {
-                        Schema s = Schema.parseOAS3Schema(schemaAr.result(), new OAS3SchemaParser());
+                        Schema s = Schema.parseOAS3Schema(schemaAr.result(), "");
                         event.result().stream().forEach((f) -> loadJsonAndValidate(f, s).setHandler(validationHandler(f)));
                     } else {
                         System.out.println(schemaAr.cause());

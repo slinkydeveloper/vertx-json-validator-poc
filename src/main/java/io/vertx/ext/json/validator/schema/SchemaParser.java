@@ -2,8 +2,11 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 import java.util.regex.Pattern;
 
@@ -12,23 +15,27 @@ import java.util.regex.Pattern;
  */
 public abstract class SchemaParser {
 
-    private void invokeSetter(String fieldName, Class fieldType, Class c, Object instance, Object value) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
-        Method setter = c.getMethod("set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1), fieldType);
-        setter.invoke(instance, value);
+    protected final JsonObject schemaRoot;
+    protected final String scope;
+    protected final Map<String, Schema> refsCache;
+
+    public SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
+        this.schemaRoot = schemaRoot;
+        this.scope = scope;
+        this.refsCache = refsCache;
     }
 
-    <T, R> void assignProperty(JsonObject jsonObject, Function<JsonObject, T> extractProperty, String fieldName, Class fieldType, Function<T, R> map, Class instanceType, Object instance) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-        T propertyValue = extractProperty.apply(jsonObject);
-        if (propertyValue != null) {
-            if (map != null) {
-                R transformedValue = map.apply(propertyValue);
-                if (transformedValue != null)
-                    invokeSetter(fieldName, fieldType, instanceType, instance, transformedValue);
-            } else {
-                invokeSetter(fieldName, fieldType, instanceType, instance, propertyValue);
-            }
-        }
+    public SchemaParser(JsonObject schemaRoot, String scope) {
+        this.schemaRoot = schemaRoot;
+        this.scope = scope;
+        this.refsCache = new HashMap<>();
     }
+
+    public Schema parse() {
+        return this.parse(schemaRoot);
+    }
+
+    public abstract Schema parse(JsonObject json);
 
     // The "type" keyword in oas can be a single type, when in draft-7 can be an array of types!
     public abstract Class<? extends Schema> solveType(JsonObject obj);

@@ -1,11 +1,12 @@
 package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 import io.vertx.ext.json.validator.schema.BaseSchema;
 import io.vertx.ext.json.validator.schema.PreValidationSchema;
 import io.vertx.ext.json.validator.schema.SchemaParser;
-import io.vertx.ext.json.validator.schema.ValidationStep;
+import io.vertx.ext.json.validator.monads.ValidationStep;
 
 import java.util.function.Function;
 
@@ -27,7 +28,7 @@ public class OAS3PreValidationSchema extends PreValidationSchema {
      * @return
      */
     @Override
-    public <T> Function<Object, ValidationStep<Object, T>> getPreValidationLogic() {
+    public <T> Function<Object, ValidationStep<Object, T, ValidationException>> getPreValidationLogic() {
         // Remember that we are in OAS3 context, null type doesn't exist!
         if (getNullable() != null && getNullable()) { // If nullable exists, we don't care about default
             return (obj) -> {
@@ -46,7 +47,10 @@ public class OAS3PreValidationSchema extends PreValidationSchema {
         } else
             return (obj) -> {
                 if (obj == null)
-                    throw ValidationExceptionFactory.generateNotMatchValidationException("This value should not be null");
+                    return ValidationStep.error(
+                            ValidationExceptionFactory
+                                    .generateNotMatchValidationException("This value should not be null")
+                    );
                 else
                     return ValidationStep.goFurther(obj);
             };

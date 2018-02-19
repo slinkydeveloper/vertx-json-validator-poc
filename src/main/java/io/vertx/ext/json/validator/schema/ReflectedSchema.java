@@ -3,6 +3,8 @@ package io.vertx.ext.json.validator.schema;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import java.util.function.Function;
 
@@ -11,8 +13,8 @@ import java.util.function.Function;
  */
 public abstract class ReflectedSchema {
 
-    JsonObject originalJson;
-    protected SchemaParser parser;
+    private JsonObject originalJson;
+    private SchemaParser parser;
 
     public ReflectedSchema(JsonObject originalJson, SchemaParser parser) {
         this.originalJson = originalJson;
@@ -27,9 +29,27 @@ public abstract class ReflectedSchema {
         return parser;
     }
 
+    private void invokeSetter(String fieldName, Class fieldType, Class c, Object instance, Object value) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        Method setter = c.getMethod("set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1), fieldType);
+        setter.invoke(instance, value);
+    }
+
+    <T, R> void assignProperty(JsonObject jsonObject, Function<JsonObject, T> extractProperty, String fieldName, Class fieldType, Function<T, R> map) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        T propertyValue = extractProperty.apply(jsonObject);
+        if (propertyValue != null) {
+            if (map != null) {
+                R transformedValue = map.apply(propertyValue);
+                if (transformedValue != null)
+                    invokeSetter(fieldName, fieldType, this.getClass(), this, transformedValue);
+            } else {
+                invokeSetter(fieldName, fieldType, this.getClass(), this, propertyValue);
+            }
+        }
+    }
+
     protected void assignDouble(String propertyName, String fieldName) {
         try {
-            parser.assignProperty(this.originalJson, jsonObject -> jsonObject.getDouble(propertyName), fieldName, Double.class, null, this.getClass(), this);
+            this.assignProperty(this.originalJson, jsonObject -> jsonObject.getDouble(propertyName), fieldName, Double.class, null);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -42,7 +62,7 @@ public abstract class ReflectedSchema {
 
     protected void assignInteger(String propertyName, String fieldName) {
         try {
-            parser.assignProperty(this.originalJson, jsonObject -> jsonObject.getInteger(propertyName), fieldName, Integer.class, null, this.getClass(), this);
+            this.assignProperty(this.originalJson, jsonObject -> jsonObject.getInteger(propertyName), fieldName, Integer.class, null);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -55,7 +75,7 @@ public abstract class ReflectedSchema {
 
     protected void assignBoolean(String propertyName, String fieldName) {
         try {
-            parser.assignProperty(this.originalJson, jsonObject -> jsonObject.getBoolean(propertyName), fieldName, Boolean.class, null, this.getClass(), this);
+            this.assignProperty(this.originalJson, jsonObject -> jsonObject.getBoolean(propertyName), fieldName, Boolean.class, null);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -68,7 +88,7 @@ public abstract class ReflectedSchema {
 
     protected void assign(String propertyName, String fieldName) {
         try {
-            parser.assignProperty(originalJson, jsonObject -> jsonObject.getValue(propertyName), fieldName, Object.class, null, this.getClass(), this);
+            this.assignProperty(originalJson, jsonObject -> jsonObject.getValue(propertyName), fieldName, Object.class, null);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -77,7 +97,7 @@ public abstract class ReflectedSchema {
 
     protected <R> void assignObject(String propertyName, String fieldName, Class fieldType, Function<JsonObject, R> map) {
         try {
-            parser.assignProperty(originalJson, jsonObject -> jsonObject.getJsonObject(propertyName), fieldName, fieldType, map, this.getClass(), this);
+            this.assignProperty(originalJson, jsonObject -> jsonObject.getJsonObject(propertyName), fieldName, fieldType, map);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -86,7 +106,7 @@ public abstract class ReflectedSchema {
 
     protected <R> void assignArray(String propertyName, String fieldName, Function<JsonArray, List<R>> map) {
         try {
-            parser.assignProperty(originalJson, jsonObject -> jsonObject.getJsonArray(propertyName), fieldName, List.class, map, this.getClass(), this);
+            this.assignProperty(originalJson, jsonObject -> jsonObject.getJsonArray(propertyName), fieldName, List.class, map);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
@@ -95,7 +115,7 @@ public abstract class ReflectedSchema {
 
     protected <T, R> void manipulateAndAssign(Function<JsonObject, T> propertyGetter, String fieldName, Class fieldType, Function<T, R> map) {
         try {
-            parser.assignProperty(originalJson, propertyGetter, fieldName, fieldType, map, this.getClass(), this);
+            this.assignProperty(originalJson, propertyGetter, fieldName, fieldType, map);
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();

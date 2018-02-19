@@ -3,12 +3,36 @@ package io.vertx.ext.json.validator.schema.oas3;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.*;
 
+import java.lang.reflect.Constructor;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
 public class OAS3SchemaParser extends SchemaParser {
+
+    public OAS3SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
+        super(schemaRoot, scope, refsCache);
+    }
+
+    public OAS3SchemaParser(JsonObject schemaRoot, String scope) {
+        super(schemaRoot, scope);
+    }
+
+    @Override
+    public Schema parse(JsonObject obj) {
+        try {
+            Class<? extends Schema> schemaClass = this.solveType(obj);
+            Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class);
+            return constructor.newInstance(obj, this);
+        } catch (Exception e) {
+            // Something happened during schema instantiation (wrong schema)
+            System.out.println("Wrong schema! " + e);
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     private Class<? extends NumberSchema> solveIntegerType(JsonObject obj) {
         return ("int64".equals(obj.getString("format"))) ? OAS3LongSchema.class : OAS3IntegerSchema.class;

@@ -1,5 +1,6 @@
 package io.vertx.ext.json.validator.schema;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonArray;
@@ -41,7 +42,9 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
         this.validators = validators;
     }
 
-    protected abstract BaseSchema parseProperty(JsonObject object);
+    protected BaseSchema parseProperty(JsonObject object) {
+        return (BaseSchema) this.getParser().parse(object);
+    };
 
     private Function<JsonObject, Future<Optional<Map.Entry<String, Object>>>> buildValidator(Map.Entry<String, BaseSchema> e) {
         String propertyName = e.getKey();
