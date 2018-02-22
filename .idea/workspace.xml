@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aeefe89b-1ec7-41ad-b01f-1b5014c9aad6" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/NumberSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/NumberSchema.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ReflectedSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ReflectedSchema.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -488,7 +486,7 @@
       <workItem from="1519034436259" duration="2937000" />
       <workItem from="1519161692518" duration="2057000" />
       <workItem from="1519201353002" duration="1731000" />
-      <workItem from="1519306192513" duration="1824000" />
+      <workItem from="1519306192513" duration="1853000" />
     </task>
     <task id="LOCAL-00001" summary="Added README.md">
       <created>1518181403297</created>
@@ -560,14 +558,22 @@
       <option name="project" value="LOCAL" />
       <updated>1519083710591</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Refactored NumberSchema">
+      <created>1519308049188</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1519308049188</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95072000" />
+    <option name="totallyTimeSpent" value="95101000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -621,7 +627,8 @@
     <MESSAGE value="Removed useless SchemaInternal interface" />
     <MESSAGE value="Refactored ValidationStep" />
     <MESSAGE value="Removed exclusiveMaximum/exclusiveMinimum field in NumberSchema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed exclusiveMaximum/exclusiveMinimum field in NumberSchema" />
+    <MESSAGE value="Refactored NumberSchema" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored NumberSchema" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

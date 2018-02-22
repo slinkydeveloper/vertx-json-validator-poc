@@ -16,73 +16,43 @@ import java.util.regex.Pattern;
  */
 public abstract class StringSchema extends BaseSchema<String> {
 
-    private Pattern pattern;
-    private Integer minLength;
-    private Integer maxLength;
-
     private Optional<Consumer<String>> checkStringProperties;
 
     public StringSchema(JsonObject obj, SchemaParser parser) {
         super(obj, parser);
-        if (obj.containsKey("format"))
-            this.pattern = parser.parseFormat(obj.getString("format"));
-        else
-            manipulateAndAssign(s -> s.getString("pattern"), "pattern", Pattern.class, Pattern::compile);
-        assignInteger("minLength");
-        assignInteger("maxLength");
 
-        this.checkStringProperties = buildCheckStringProperties();
-    }
+        final Pattern pattern = parsePattern();
+        final Integer minLength = get("minLength", Integer.class);
+        final Integer maxLength = get("maxLength", Integer.class);
 
-    public Pattern getPattern() {
-        return pattern;
-    }
-
-    public void setPattern(Pattern pattern) {
-        this.pattern = pattern;
-    }
-
-    public Integer getMinLength() {
-        return minLength;
-    }
-
-    public void setMinLength(Integer minLength) {
-        this.minLength = minLength;
-    }
-
-    public Integer getMaxLength() {
-        return maxLength;
-    }
-
-    public void setMaxLength(Integer maxLength) {
-        this.maxLength = maxLength;
-    }
-
-    private void checkMinLength(String value) {
-        if (!(value.length() >= minLength))
-            throw ValidationExceptionFactory.generateNotMatchValidationException("String should have min length of " + minLength);
-    }
-
-    private void checkMaxLength(String value) {
-        if (!(value.length() <= maxLength))
-            throw ValidationExceptionFactory.generateNotMatchValidationException("String should have max length of " + maxLength);
-    }
-
-    private void checkPattern(String value) {
-        if (!pattern.matcher(value).matches())
-            throw ValidationExceptionFactory.generateNotMatchValidationException("String should match pattern " + pattern);
-    }
-
-    private Optional<Consumer<String>> buildCheckStringProperties() {
         List<Consumer<String>> checkers = new ArrayList<>();
-        if (this.getPattern() != null)
-            checkers.add(this::checkPattern);
-        if (this.getMaxLength() != null)
-            checkers.add(this::checkMaxLength);
-        if (this.getMinLength() != null)
-            checkers.add(this::checkMinLength);
+        if (pattern != null)
+            checkers.add((value) -> {
+                if (!pattern.matcher(value).matches())
+                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should match pattern " + pattern);
+            });
+        if (maxLength != null)
+            checkers.add((value) -> {
+                if (!(value.length() <= maxLength))
+                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should have max length of " + maxLength);
+            });
+        if (minLength != null)
+            checkers.add((value) -> {
+                if (!(value.length() >= minLength))
+                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should have min length of " + minLength);
+            });
 
-        return Utils.composeCheckers(checkers);
+        this.checkStringProperties = Utils.composeCheckers(checkers);
+    }
+
+    private Pattern parsePattern() {
+        try {
+            return getParser().parseFormat(getRequired("format", String.class));
+        } catch (IllegalArgumentException e) {
+            String pattern = get("pattern", String.class);
+            if (pattern == null) return null;
+            else return Pattern.compile(pattern);
+        }
     }
 
     @Override
