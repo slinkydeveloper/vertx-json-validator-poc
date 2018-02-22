@@ -14,88 +14,58 @@ import java.util.function.Consumer;
  * @author Francesco Guardiani @slinkydeveloper
  */
 public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
-
-  private Double maximum = null;
-  private Double minimum = null;
-  private Double multipleOf = null;
-
   private Optional<Consumer<Number>> checkNumberProperties;
 
   public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
     super(jsonObject, parser);
-    assignDouble("maximum");
-    assignDouble("minimum");
-    assignDouble("multipleOf");
 
-    this.checkNumberProperties = buildCheckNumberProperties(getOriginalJson().getBoolean("exclusiveMaximum"), getOriginalJson().getBoolean("exclusiveMinimum"));
+    Double maximum = get("maximum", Double.class);
+    Double minimum = get("minimum", Double.class);
+    Double multipleOf = get("multipleOf", Double.class);
+
+    List<Consumer<Double>> checkers = new ArrayList<>();
+    if (minimum != null)
+      checkers.add(this.buildCheckMinimum(minimum, get("exclusiveMinimum", Boolean.class)));
+    if (maximum != null)
+      checkers.add(this.buildCheckMaximum(maximum, get("exclusiveMaximum", Boolean.class)));
+    if (multipleOf != null)
+      checkers.add(this.buildCheckMultipleOf(multipleOf));
+
+    checkNumberProperties = Utils.composeCheckers(checkers).map((c) -> Utils.applyAndAccept(Number::doubleValue, c));
   }
 
-  public Double getMaximum() {
-    return maximum;
-  }
-
-  public void setMaximum(Double maximum) {
-    this.maximum = maximum;
-  }
-
-  public Double getMinimum() {
-    return minimum;
-  }
-
-  public void setMinimum(Double minimum) {
-    this.minimum = minimum;
-  }
-
-  public Double getMultipleOf() {
-    return multipleOf;
-  }
-
-  public void setMultipleOf(Double multipleOf) {
-    this.multipleOf = multipleOf;
-  }
-
-  private Consumer<Double> buildCheckMaximum(Boolean exclusiveMaximum) {
+  private Consumer<Double> buildCheckMaximum(final Double maximum, final Boolean exclusiveMaximum) {
     if (exclusiveMaximum != null && exclusiveMaximum)
       return (val) -> {
         if (!(val < maximum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + this.maximum);
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + maximum);
       };
     else
       return (val) -> {
         if (!(val <= maximum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be <= " + this.maximum);
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be <= " + maximum);
       };
   }
 
-  private Consumer<Double> buildCheckMinimum(Boolean exclusiveMinimum) {
+  private Consumer<Double> buildCheckMinimum(final Double minimum, final Boolean exclusiveMinimum) {
     if (exclusiveMinimum != null && exclusiveMinimum)
       return (val) -> {
         if (!(val > minimum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + this.minimum);
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + minimum);
       };
     else
       return (val) -> {
         if (!(val >= minimum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be >= " + this.minimum);
+          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be >= " + minimum);
       };
   }
 
-  private void checkMultipleOf(double val) {
-    if (!(val % multipleOf == 0))
-      throw ValidationExceptionFactory.generateNotMatchValidationException(
-              "Number should be multipleOf " + this.multipleOf);
-  }
-
-  private Optional<Consumer<Number>> buildCheckNumberProperties(Boolean exclusiveMaximum, Boolean exclusiveMinimum) {
-    List<Consumer<Double>> checkers = new ArrayList<>();
-    if (this.getMinimum() != null)
-      checkers.add(this.buildCheckMinimum(exclusiveMaximum));
-    if (this.getMaximum() != null)
-      checkers.add(this.buildCheckMaximum(exclusiveMinimum));
-    if (this.getMultipleOf() != null)
-      checkers.add(this::checkMultipleOf);
-
-    return Utils.composeCheckers(checkers).map((c) -> Utils.applyAndAccept(Number::doubleValue, c));
+  private Consumer<Double> buildCheckMultipleOf(final Double multipleOf) {
+    return (val) -> {
+      if (!(val % multipleOf == 0))
+        throw ValidationExceptionFactory.generateNotMatchValidationException(
+                "Number should be multipleOf " + multipleOf);
+    };
   }
 
   @Override

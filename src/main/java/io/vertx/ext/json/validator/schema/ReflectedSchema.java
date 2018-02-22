@@ -29,6 +29,8 @@ public abstract class ReflectedSchema {
         return parser;
     }
 
+    // TODO for all reflection methods check the right exception and blabla
+
     private void invokeSetter(String fieldName, Class fieldType, Class c, Object instance, Object value) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         Method setter = c.getMethod("set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1), fieldType);
         setter.invoke(instance, value);
@@ -119,6 +121,25 @@ public abstract class ReflectedSchema {
         } catch (Exception e) {
             System.err.println("Unexpected Exception " + e);
             e.printStackTrace();
+        }
+    }
+
+    protected <T> T get(String propertyName, Class c) {
+        try {
+            return (T) c.cast(this.getOriginalJson().getValue(propertyName));
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Wrong type for property " + propertyName);
+        }
+    }
+
+    protected <T> T getRequired(String propertyName, Class c) {
+        try {
+            Object v = this.getOriginalJson().getValue(propertyName);
+            if (v == null)
+                throw new IllegalArgumentException("Missing property " + propertyName);
+            return (T) c.cast(v);
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Wrong type for property " + propertyName);
         }
     }
 
