@@ -6,7 +6,7 @@ import io.vertx.ext.json.validator.ValidationExceptionFactory;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class FloatSchema extends NumberSchema<Float> {
+public class FloatSchema extends NumberSchema<Float> {
     public FloatSchema(JsonObject jsonObject, SchemaParser parser) {
         super(jsonObject, parser);
     }

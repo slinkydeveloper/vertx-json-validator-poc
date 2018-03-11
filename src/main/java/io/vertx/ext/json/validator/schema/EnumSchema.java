@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class EnumSchema extends BaseSchema<Object> {
+public class EnumSchema extends BaseSchema<Object> {
 
     List<Object> allowedValues;
 

@@ -35,11 +35,11 @@ public class OAS3SchemaParser extends SchemaParser {
     }
 
     private Class<? extends NumberSchema> solveIntegerType(JsonObject obj) {
-        return ("int64".equals(obj.getString("format"))) ? OAS3LongSchema.class : OAS3IntegerSchema.class;
+        return ("int64".equals(obj.getString("format"))) ? LongSchema.class : IntegerSchema.class;
     }
 
     private Class<? extends NumberSchema> solveFloatingPointType(JsonObject obj) {
-        return ("double".equals(obj.getString("format"))) ? OAS3DoubleSchema.class : OAS3FloatSchema.class;
+        return ("double".equals(obj.getString("format"))) ? DoubleSchema.class : FloatSchema.class;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class OAS3SchemaParser extends SchemaParser {
             return this.inferType(obj);
         } else {
             if (obj.containsKey("enum")) {
-                return OAS3EnumSchema.class;
+                return EnumSchema.class;
             } else {
                 switch (type) {
                     case "integer":
@@ -60,6 +60,8 @@ public class OAS3SchemaParser extends SchemaParser {
                         return OAS3StringSchema.class;
                     case "object":
                         return OAS3ObjectSchema.class;
+                    case "boolean":
+                        return BooleanSchema.class;
                     default:
                         return OAS3StringSchema.class; // Should throw an error here!
                 }

@@ -4,66 +4,6 @@
     <list default="true" id="aeefe89b-1ec7-41ad-b01f-1b5014c9aad6" name="Default" comment="">
       <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ArraySchema.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BooleanSchema.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/allOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/anyOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/boolean_schema.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/const.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/contains.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/default.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/definitions.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/dependencies.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/enum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/exclusiveMaximum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/exclusiveMinimum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/if-then-else.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/items.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxLength.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maximum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minLength.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minimum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/multipleOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/not.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/oneOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/bignum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/content.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/ecmascript-regex.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/date-time.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/date.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/email.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/hostname.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/idn-email.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/idn-hostname.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/ipv4.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/ipv6.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/iri-reference.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/iri.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/json-pointer.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/regex.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/relative-json-pointer.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/time.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri-reference.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri-template.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/zeroTerminatedFloats.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/pattern.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/patternProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/properties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/propertyNames.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/ref.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/refRemote.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/folder/folderInteger.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/integer.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/name.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/subSchemas.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/required.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/type.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/uniqueItems.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" />
@@ -582,7 +522,7 @@
       <workItem from="1520192612033" duration="222000" />
       <workItem from="1520533454919" duration="1923000" />
       <workItem from="1520627418875" duration="1234000" />
-      <workItem from="1520764801498" duration="8093000" />
+      <workItem from="1520764801498" duration="8123000" />
     </task>
     <task id="LOCAL-00001" summary="Added README.md">
       <created>1518181403297</created>
@@ -675,7 +615,14 @@
       <option name="project" value="LOCAL" />
       <updated>1520772901423</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Added test jsons for draft-7">
+      <created>1520772930520</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1520772930520</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -711,7 +658,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108817000" />
+    <option name="totallyTimeSpent" value="108847000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
@@ -772,7 +719,8 @@
     <MESSAGE value="Refactored NumberSchema" />
     <MESSAGE value="Refactored StringSchema" />
     <MESSAGE value="Added test jsons for oas 3 (from draft-6) and created OAS3IntegrationTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added test jsons for oas 3 (from draft-6) and created OAS3IntegrationTest" />
+    <MESSAGE value="Added test jsons for draft-7" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test jsons for draft-7" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

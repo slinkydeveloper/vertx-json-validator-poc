@@ -5,7 +5,7 @@ import io.vertx.core.json.JsonObject;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class DoubleSchema extends NumberSchema<Double> {
+public class DoubleSchema extends NumberSchema<Double> {
     public DoubleSchema(JsonObject jsonObject, SchemaParser parser) {
         super(jsonObject, parser);
     }

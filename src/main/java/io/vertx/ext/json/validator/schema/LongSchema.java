@@ -6,7 +6,7 @@ import io.vertx.ext.json.validator.ValidationExceptionFactory;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class LongSchema extends NumberSchema<Long> {
+public class LongSchema extends NumberSchema<Long> {
     public LongSchema(JsonObject jsonObject, SchemaParser parser) {
         super(jsonObject, parser);
     }

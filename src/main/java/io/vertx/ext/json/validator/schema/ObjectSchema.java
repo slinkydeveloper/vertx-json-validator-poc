@@ -22,11 +22,12 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
     public ObjectSchema(JsonObject schema, SchemaParser parser) {
         super(schema, parser);
         assignArray("required", "required", (json) -> json.stream().map(String.class::cast).collect(Collectors.toList()));
-        assignObject("properties", "validators", LinkedList.class,
+        assignObject("properties", "validators", LinkedList.class, //TODO missing properties keyword?
                 obj -> obj.stream()
                     .map(e -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue())))
                     .map(this::buildValidator)
                     .collect(Collectors.toCollection(LinkedList::new)));
+        //TODO additionalProperties
 
     }
 

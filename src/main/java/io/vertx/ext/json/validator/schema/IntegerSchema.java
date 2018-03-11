@@ -5,7 +5,7 @@ import io.vertx.core.json.JsonObject;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class IntegerSchema extends NumberSchema<Integer> {
+public class IntegerSchema extends NumberSchema<Integer> {
 
     public IntegerSchema(JsonObject jsonObject, SchemaParser parser) {
         super(jsonObject, parser);
