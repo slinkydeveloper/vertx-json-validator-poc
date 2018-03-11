@@ -2,12 +2,9 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 
 /**
@@ -35,13 +32,19 @@ public abstract class SchemaParser {
         return this.parse(schemaRoot);
     }
 
-    public abstract Schema parse(JsonObject json);
+    public abstract Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj);
+
+    public Schema parse(JsonObject obj) {
+        return this.instantiateSchema(this.solveType(obj), obj);
+    }
 
     // The "type" keyword in oas can be a single type, when in draft-7 can be an array of types!
     public abstract Class<? extends Schema> solveType(JsonObject obj);
 
     // When type is missing you should infer type from schema, and again this is different between specs
     public abstract Class<? extends Schema> inferType(JsonObject obj);
+
+    public abstract Map<Class<? extends Schema>, List<String>> getKeywordsMap();
 
     // format keyword is different between oas and json schema specs
     public abstract Pattern parseFormat(String format);

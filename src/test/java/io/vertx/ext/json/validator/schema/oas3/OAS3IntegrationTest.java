@@ -19,7 +19,6 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
     @Parameterized.Parameters(name = "{0}")
     public static Iterable<Object[]> data() throws Exception {
         List<String> tests = Lists.newArrayList(
-                "additionalItems",
                 "additionalProperties",
                 "allOf",
                 "anyOf",
@@ -45,7 +44,6 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
                 "not",
                 "oneOf",
                 "pattern",
-                "patternProperties",
                 "properties",
                 "propertyNames",
                 "ref",
@@ -54,7 +52,7 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
                 "type",
                 "uniqueItems"
         );
-        return BaseIntegrationTest.buildParameters(tests);
+        return BaseIntegrationTest.buildParameters(tests, "src/test/resources/openapi3");
     }
 
 

@@ -4,7 +4,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.*;
 
 import java.lang.reflect.Constructor;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Pattern;
 
 /**
@@ -12,18 +12,49 @@ import java.util.regex.Pattern;
  */
 public class OAS3SchemaParser extends SchemaParser {
 
-    public OAS3SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
-        super(schemaRoot, scope, refsCache);
-    }
+    Map<Class<? extends Schema>, List<String>> keywordsMap;
 
     public OAS3SchemaParser(JsonObject schemaRoot, String scope) {
-        super(schemaRoot, scope);
+        this(schemaRoot, scope, new HashMap<>());
+    }
+
+    public OAS3SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
+        super(schemaRoot, scope, refsCache);
+        keywordsMap = new HashMap<>();
+        fillKeywordsMap();
+    }
+
+    // This map is used by MissingTypeSchema
+    private void fillKeywordsMap() {
+        keywordsMap.put(GenericNumberSchema.class, Arrays.asList(
+                "multipleOf",
+                "maximum",
+                "exclusiveMaximum",
+                "minimum",
+                "exclusiveMinimum"
+        ));
+        keywordsMap.put(OAS3StringSchema.class, Arrays.asList(
+                "maxLength",
+                "minLength",
+                "pattern"
+        ));
+        keywordsMap.put(ArraySchema.class, Arrays.asList(
+                "items",
+                "maxItems",
+                "minItems",
+                "uniqueItems"
+        ));
+        keywordsMap.put(OAS3ObjectSchema.class, Arrays.asList(
+                "required",
+                "properties",
+                "additionalProperties"
+        ));
+        //TODO fill with other keywords?
     }
 
     @Override
-    public Schema parse(JsonObject obj) {
+    public Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj) {
         try {
-            Class<? extends Schema> schemaClass = this.solveType(obj);
             Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class);
             return constructor.newInstance(obj, this);
         } catch (Exception e) {
@@ -46,7 +77,7 @@ public class OAS3SchemaParser extends SchemaParser {
     public Class<? extends Schema> solveType(JsonObject obj) {
         String type = obj.getString("type");
         if (type == null) {
-            return this.inferType(obj);
+            return MissingTypeSchema.class;
         } else {
             if (obj.containsKey("enum")) {
                 return EnumSchema.class;
@@ -71,7 +102,12 @@ public class OAS3SchemaParser extends SchemaParser {
 
     @Override
     public Class<? extends Schema> inferType(JsonObject obj) {
-        return OAS3StringSchema.class; //TODO This should be replaced with type guessing logic
+        return MissingTypeSchema.class;
+    }
+
+    @Override
+    public Map<Class<? extends Schema>, List<String>> getKeywordsMap() {
+        return keywordsMap;
     }
 
     @Override

@@ -19,17 +19,17 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
   public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
     super(jsonObject, parser);
 
-    Double maximum = get("maximum", Double.class);
-    Double minimum = get("minimum", Double.class);
-    Double multipleOf = get("multipleOf", Double.class);
+    Number maximum = get("maximum", Number.class);
+    Number minimum = get("minimum", Number.class);
+    Number multipleOf = get("multipleOf", Number.class);
 
     List<Consumer<Double>> checkers = new ArrayList<>();
     if (minimum != null)
-      checkers.add(this.buildCheckMinimum(minimum, get("exclusiveMinimum", Boolean.class)));
+      checkers.add(this.buildCheckMinimum(minimum.doubleValue(), get("exclusiveMinimum", Boolean.class)));
     if (maximum != null)
-      checkers.add(this.buildCheckMaximum(maximum, get("exclusiveMaximum", Boolean.class)));
+      checkers.add(this.buildCheckMaximum(maximum.doubleValue(), get("exclusiveMaximum", Boolean.class)));
     if (multipleOf != null)
-      checkers.add(this.buildCheckMultipleOf(multipleOf));
+      checkers.add(this.buildCheckMultipleOf(multipleOf.doubleValue()));
 
     checkNumberProperties = Utils.composeCheckers(checkers).map((c) -> Utils.applyAndAccept(Number::doubleValue, c));
   }

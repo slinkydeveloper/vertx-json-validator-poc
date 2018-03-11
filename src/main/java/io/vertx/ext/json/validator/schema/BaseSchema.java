@@ -49,12 +49,12 @@ public abstract class BaseSchema<T> extends ReflectedSchema implements Schema<T>
 
     abstract Future<T> validationLogic(T obj);
 
-    T checkType(Object obj) {
-        if (obj.getClass().equals(getRequiredType())) {
+    public T checkType(Object obj) {
+        if (getRequiredType().isInstance(obj)) {
             return (T)obj;
         } else {
             throw ValidationExceptionFactory
-                    .generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
+                    .generateNotMatchValidationException("Wrong type received " + obj.getClass() + ", expected " + getRequiredType());
         }
     }
 }

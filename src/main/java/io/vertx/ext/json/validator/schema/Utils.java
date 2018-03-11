@@ -1,5 +1,7 @@
 package io.vertx.ext.json.validator.schema;
 
+import io.vertx.core.json.JsonObject;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Consumer;
@@ -14,8 +16,19 @@ public class Utils {
         return t -> c.accept(f.apply(t));
     }
 
-    static <S, T> Optional<Consumer<T>> composeCheckers(List<Consumer<T>> t) {
+    static <T> Optional<Consumer<T>> composeCheckers(List<Consumer<T>> t) {
         return t.stream().reduce(Consumer::andThen);
+    }
+
+    static boolean containsAllKeys(JsonObject obj, List<String> keys) {
+        return obj.fieldNames().containsAll(keys);
+    }
+
+    static boolean containsAtLeastOneKey(JsonObject obj, List<String> keys) {
+        return keys
+                .stream()
+                .map(obj::containsKey)
+                .reduce(false, Boolean::logicalOr);
     }
 
 }

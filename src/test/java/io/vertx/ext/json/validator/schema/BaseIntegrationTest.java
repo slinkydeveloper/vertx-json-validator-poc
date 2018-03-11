@@ -51,9 +51,9 @@ public abstract class BaseIntegrationTest {
     String testName;
     JsonObject test;
 
-    public static Iterable<Object[]> buildParameters(List<String> tests) {
+    public static Iterable<Object[]> buildParameters(List<String> tests, String schemasPath) {
         return tests.stream()
-                .map(f -> new AbstractMap.SimpleImmutableEntry<>(f, Paths.get("src", "test", "resources", "openapi3", f + ".json")))
+                .map(f -> new AbstractMap.SimpleImmutableEntry<>(f, Paths.get(schemasPath, f + ".json")))
                 .map(p -> {
                     try {
                         return new AbstractMap.SimpleImmutableEntry<>(p.getKey(), Files.readAllLines(p.getValue(), Charset.forName("UTF8")));
