@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefe89b-1ec7-41ad-b01f-1b5014c9aad6" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_auth_common_3_5_1_SNAPSHOT.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_bridge_common_3_5_1_SNAPSHOT.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_unit_3_5_1_SNAPSHOT.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_web_3_5_1_SNAPSHOT.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_9_0.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ArraySchema.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BooleanSchema.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalItems.json" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalProperties.json" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/allOf.json" />
@@ -72,50 +64,7 @@
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/required.json" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/type.json" />
       <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/uniqueItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/additionalItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/additionalProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/allOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/anyOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/boolean_schema.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/const.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/contains.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/default.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/definitions.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/dependencies.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/enum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/exclusiveMaximum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/exclusiveMinimum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/items.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxLength.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maximum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minItems.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minLength.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minimum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/multipleOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/not.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/oneOf.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/bignum.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/ecmascript-regex.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/format.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/zeroTerminatedFloats.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/pattern.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/patternProperties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/properties.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/propertyNames.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/ref.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/refRemote.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/folder/folderInteger.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/integer.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/name.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/subSchemas.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/required.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/type.json" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/uniqueItems.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" />
@@ -128,7 +77,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegerSchema.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3LongSchema.java" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" />
-      <change beforePath="$PROJECT_DIR$/vertx-json-validator-poc.iml" afterPath="$PROJECT_DIR$/vertx-json-validator-poc.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -634,7 +582,7 @@
       <workItem from="1520192612033" duration="222000" />
       <workItem from="1520533454919" duration="1923000" />
       <workItem from="1520627418875" duration="1234000" />
-      <workItem from="1520764801498" duration="7965000" />
+      <workItem from="1520764801498" duration="8093000" />
     </task>
     <task id="LOCAL-00001" summary="Added README.md">
       <created>1518181403297</created>
@@ -720,7 +668,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519308059246</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added test jsons for oas 3 (from draft-6) and created OAS3IntegrationTest">
+      <created>1520772901423</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1520772901423</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -756,7 +711,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108689000" />
+    <option name="totallyTimeSpent" value="108817000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
@@ -816,7 +771,8 @@
     <MESSAGE value="Removed exclusiveMaximum/exclusiveMinimum field in NumberSchema" />
     <MESSAGE value="Refactored NumberSchema" />
     <MESSAGE value="Refactored StringSchema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored StringSchema" />
+    <MESSAGE value="Added test jsons for oas 3 (from draft-6) and created OAS3IntegrationTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added test jsons for oas 3 (from draft-6) and created OAS3IntegrationTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
