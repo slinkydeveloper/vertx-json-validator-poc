@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.Optional;
@@ -22,9 +23,13 @@ public abstract class BaseSchema<T> extends ReflectedSchema implements Schema<T>
         // I build a post validation
         this.validationFunction = preValidationSchema
                 .<T>getPreValidationLogic()
-                .andThen(v -> v
-                        .getOrGoFurtherFuture(x -> this.validationLogic(this.checkType(x)))
-                );
+                .andThen(v -> {
+                    try {
+                        return v.getOrGoFurtherFuture(x -> this.validationLogic(this.checkType(x)));
+                    } catch (ValidationException e) { // Unmanaged exceptions catcher
+                        return Future.failedFuture(e);
+                    }
+                });
         postValidationSchema.<T, T>getPostValidationLogic().ifPresent(l -> {
             this.validationFunction = this.validationFunction.andThen(f -> f.compose(l));
         });
