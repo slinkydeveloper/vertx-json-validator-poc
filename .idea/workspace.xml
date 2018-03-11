@@ -2,8 +2,133 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aeefe89b-1ec7-41ad-b01f-1b5014c9aad6" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_auth_common_3_5_1_SNAPSHOT.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_bridge_common_3_5_1_SNAPSHOT.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_unit_3_5_1_SNAPSHOT.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__io_vertx_vertx_web_3_5_1_SNAPSHOT.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_9_0.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ArraySchema.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BooleanSchema.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/additionalProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/allOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/anyOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/boolean_schema.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/const.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/contains.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/default.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/definitions.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/dependencies.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/enum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/exclusiveMaximum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/exclusiveMinimum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/if-then-else.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/items.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxLength.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maxProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/maximum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minLength.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/minimum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/multipleOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/not.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/oneOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/bignum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/content.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/ecmascript-regex.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/date-time.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/date.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/email.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/hostname.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/idn-email.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/idn-hostname.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/ipv4.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/ipv6.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/iri-reference.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/iri.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/json-pointer.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/regex.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/relative-json-pointer.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/time.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri-reference.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri-template.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/format/uri.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/optional/zeroTerminatedFloats.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/pattern.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/patternProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/properties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/propertyNames.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/ref.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/refRemote.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/folder/folderInteger.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/integer.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/name.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/remotes/subSchemas.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/required.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/type.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/draft-7/uniqueItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/additionalItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/additionalProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/allOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/anyOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/boolean_schema.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/const.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/contains.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/default.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/definitions.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/dependencies.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/enum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/exclusiveMaximum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/exclusiveMinimum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/items.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxLength.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maxProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/maximum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minItems.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minLength.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/minimum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/multipleOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/not.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/oneOf.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/bignum.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/ecmascript-regex.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/format.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/optional/zeroTerminatedFloats.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/pattern.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/patternProperties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/properties.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/propertyNames.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/ref.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/refRemote.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/folder/folderInteger.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/integer.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/name.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/remotes/subSchemas.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/required.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/type.json" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/openapi3/uniqueItems.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3DoubleSchema.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3EnumSchema.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3FloatSchema.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegerSchema.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3LongSchema.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" afterPath="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" />
+      <change beforePath="$PROJECT_DIR$/vertx-json-validator-poc.iml" afterPath="$PROJECT_DIR$/vertx-json-validator-poc.iml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -16,61 +141,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IntegerSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java">
+      <file leaf-file-name="OAS3IntegrationTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
-              <folding />
+            <state relative-caret-position="207">
+              <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LongSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java">
+      <file leaf-file-name="multipleOf.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/multipleOf.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StringSchema.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="234">
-              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReflectedSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ReflectedSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="138" column="87" lean-forward="false" selection-start-line="138" selection-start-column="87" selection-end-line="138" selection-end-column="87" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ObjectSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PreValidationSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/PreValidationSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
+            <state relative-caret-position="90">
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -79,41 +166,21 @@
       <file leaf-file-name="OAS3SchemaParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
+            <state relative-caret-position="-522">
               <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="OAS3StringSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3StringSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
-                <element signature="e#375#376#0" expanded="true" />
-                <element signature="e#409#410#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#592#593#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BaseSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BaseSchema.java">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DoubleSchema.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+            <state relative-caret-position="-9">
+              <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -133,11 +200,16 @@
     <findStrings>
       <find>io.vertx.ext.web.api.validation.ValidationException</find>
       <find>ValidationException.ValidationExceptionFactory</find>
+      <find>getList</find>
+      <find>int by</find>
     </findStrings>
     <replaceStrings>
       <replace>ValidationException</replace>
       <replace>ValidationExceptionFactory</replace>
     </replaceStrings>
+    <dirStrings>
+      <dir>$PROJECT_DIR$/src/test/resources/openapi3</dir>
+    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
@@ -157,14 +229,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegerSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3Schema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3LongSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3FloatSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/ValidationException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/ValidationExceptionFactory.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3StringSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/RegularExpressions.java" />
         <option value="$PROJECT_DIR$/src/main/resources/tests/test.json" />
         <option value="$PROJECT_DIR$/src/main/resources/tests/test2.json" />
@@ -186,10 +250,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/tests/test7.json" />
         <option value="$PROJECT_DIR$/src/main/resources/schema.json" />
         <option value="$PROJECT_DIR$/src/main/resources/tests/test8.json" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3EnumSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/SchemaInternal.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BaseSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/Schema.java" />
@@ -200,14 +261,25 @@
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/monads/ValidationStep.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/PreValidationSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3ObjectSchema.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/TestVerticle.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/SchemaParser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3PreValidationSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/NumberSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ReflectedSchema.java" />
         <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ArraySchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/BooleanSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BooleanSchema.java" />
+        <option value="$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java" />
+        <option value="$PROJECT_DIR$/src/test/resources/openapi3/multipleOf.json" />
       </list>
     </option>
   </component>
@@ -245,7 +317,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -298,17 +371,52 @@
               <item name="schema" type="462c0819:PsiDirectoryNode" />
               <item name="oas3" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="vertx-json-validator-poc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vertx-json-validator-poc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vertx-json-validator-poc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vertx-json-validator-poc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vertx-json-validator-poc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vertx-json-validator-poc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="oas3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vertx-json-validator-poc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vertx-json-validator-poc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="vertx-json-validator-poc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="vertx-json-validator-poc" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="openapi3" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/VisualVM/visualvm_139/bin/visualvm" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="/usr/bin/node" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -316,20 +424,25 @@
     <property name="ignore_missing_gitignore" value="true" />
     <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
     <property name="add_unversioned_files" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/tests" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
       <recent name="io.vertx.ext.json.validator.schema.monads" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/tests" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="io.vertx.ext.json.validator.schema" />
       <recent name="io.vertx.ext.json.validator" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/openapi3" />
+      <recent name="$PROJECT_DIR$/src/test/resources/draft-7" />
       <recent name="$PROJECT_DIR$/src/main/resources/tests" />
     </key>
   </component>
@@ -345,7 +458,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.OAS3IntegrationTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="WIDTH" value="400" />
       <option name="HEIGHT" value="300" />
@@ -384,6 +497,31 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+    </configuration>
+    <configuration name="OAS3IntegrationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="io.vertx.ext.json.validator.schema.oas3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="vertx-json-validator-poc" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="io.vertx.ext.json.validator.schema.oas3" />
+      <option name="MAIN_CLASS_NAME" value="io.vertx.ext.json.validator.schema.oas3.OAS3IntegrationTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -445,9 +583,14 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.TestVerticle" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.OAS3IntegrationTest" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.TestVerticle" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JUnit.OAS3IntegrationTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TestVerticle" />
       </list>
     </recent_temporary>
   </component>
@@ -486,7 +629,12 @@
       <workItem from="1519034436259" duration="2937000" />
       <workItem from="1519161692518" duration="2057000" />
       <workItem from="1519201353002" duration="1731000" />
-      <workItem from="1519306192513" duration="1853000" />
+      <workItem from="1519306192513" duration="1865000" />
+      <workItem from="1519923949071" duration="2232000" />
+      <workItem from="1520192612033" duration="222000" />
+      <workItem from="1520533454919" duration="1923000" />
+      <workItem from="1520627418875" duration="1234000" />
+      <workItem from="1520764801498" duration="7965000" />
     </task>
     <task id="LOCAL-00001" summary="Added README.md">
       <created>1518181403297</created>
@@ -565,47 +713,86 @@
       <option name="project" value="LOCAL" />
       <updated>1519308049188</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactored StringSchema">
+      <created>1519308059246</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1519308059246</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 28m 28s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 30m 23s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 30m 35s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 31m 57s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 32m 37s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 32m 51s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 35m 08s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 35m 38s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 50m 30s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="OAS3IntegrationTest - 2018.03.11 at 13h 52m 18s.xml">
+      <configuration name="OAS3IntegrationTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="95101000" />
+    <option name="totallyTimeSpent" value="108689000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="28" width="1920" height="1018" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cargo" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18856838" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39885715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.328" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19925214" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39885715" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug with VisualVM" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32914287" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -628,7 +815,8 @@
     <MESSAGE value="Refactored ValidationStep" />
     <MESSAGE value="Removed exclusiveMaximum/exclusiveMinimum field in NumberSchema" />
     <MESSAGE value="Refactored NumberSchema" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored NumberSchema" />
+    <MESSAGE value="Refactored StringSchema" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactored StringSchema" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -637,16 +825,71 @@
           <properties class="io.vertx.ext.web.api.validation.ValidationException" package="io.vertx.ext.web.api.validation" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java</url>
+          <line>190</line>
+          <properties />
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java</url>
+          <line>192</line>
+          <properties />
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java</url>
+          <line>194</line>
+          <properties />
+          <option name="timeStamp" value="26" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="14" />
+      <option name="time" value="27" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
+      <expression>
+        <expression-string>jsonArray.stream().collect(Collectors.toList())</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>jsonArray.getValue(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tests.getJsonObject(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>((ArrayList) tests).get(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <custom-info>java.util.ArrayList</custom-info>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>(JsonObject)tests.get(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tests.get(0) instanceof JsonObject</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>tests.get(0)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>new JsonObject(t);</expression-string>
         <language-id>JAVA</language-id>
@@ -655,123 +898,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tests/test3.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tests/test4.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/tests/test5.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3DoubleSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/SchemaBehaviours.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaInternal.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3PostValidationSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="5" lean-forward="false" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/ValidationExceptionFactory.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="22" column="0" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3EnumSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_144/jre/lib/rt.jar!/sun/instrument/InstrumentationImpl.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_144/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="410" column="0" lean-forward="false" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_144/src.zip!/java/net/URLClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="380" column="0" lean-forward="false" selection-start-line="380" selection-start-column="0" selection-end-line="380" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_144/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="381" column="29" lean-forward="false" selection-start-line="381" selection-start-column="29" selection-end-line="381" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/java/jdk1.8.0_144/src.zip!/java/util/function/Function.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="87" column="0" lean-forward="false" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-core/3.5.1-SNAPSHOT/vertx-core-3.5.1-SNAPSHOT-sources.jar!/io/vertx/core/impl/SucceededFuture.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-core/3.5.1-SNAPSHOT/vertx-core-3.5.1-SNAPSHOT-sources.jar!/io/vertx/core/Future.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3">
-          <caret line="255" column="24" lean-forward="false" selection-start-line="255" selection-start-column="24" selection-end-line="255" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3LongSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="7" lean-forward="false" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="9" column="54" lean-forward="false" selection-start-line="9" selection-start-column="54" selection-end-line="9" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -863,7 +989,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -871,31 +996,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="7" column="18" lean-forward="false" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/TestVerticle.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3BaseSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="1" lean-forward="false" selection-start-line="30" selection-start-column="1" selection-end-line="36" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -903,22 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="27" column="33" lean-forward="false" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="41" column="45" lean-forward="true" selection-start-line="41" selection-start-column="45" selection-end-line="41" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/Schema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
       </provider>
@@ -934,15 +1018,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/PreValidationSchema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="468">
-          <caret line="32" column="8" lean-forward="true" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <caret line="32" column="8" lean-forward="false" selection-start-line="32" selection-start-column="8" selection-end-line="32" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -951,21 +1027,59 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding>
-            <element signature="e#375#376#0" expanded="true" />
-            <element signature="e#409#410#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+        <state relative-caret-position="279">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3DoubleSchema.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/DoubleSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/FloatSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="7" lean-forward="false" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="7" lean-forward="false" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/NumberSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="63" column="21" lean-forward="false" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3EnumSchema.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BaseSchema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -974,60 +1088,294 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/IntegerSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/EnumSchema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="7" column="22" lean-forward="false" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <caret line="12" column="7" lean-forward="false" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/BooleanSchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#342#343#0" expanded="false" />
+            <element signature="e#376#377#0" expanded="false" />
+            <element signature="e#430#431#0" expanded="false" />
+            <element signature="e#466#467#0" expanded="false" />
+            <element signature="e#532#533#0" expanded="false" />
+            <element signature="e#582#583#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ObjectSchema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="16" column="22" lean-forward="false" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/NumberSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/test/resources/draft-7/remotes/folder/folderInteger.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="990">
-          <caret line="63" column="21" lean-forward="true" selection-start-line="63" selection-start-column="21" selection-end-line="63" selection-end-column="21" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/LongSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/test/resources/draft-7/additionalItems.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="8" column="22" lean-forward="false" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/remotes/folder/folderInteger.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ArraySchema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#375#376#0" expanded="false" />
+            <element signature="e#409#410#0" expanded="false" />
+            <element signature="e#465#466#0" expanded="false" />
+            <element signature="e#573#574#0" expanded="false" />
+            <element signature="e#600#601#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/ReflectedSchema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
+        <state relative-caret-position="783">
           <caret line="138" column="87" lean-forward="false" selection-start-line="138" selection-start-column="87" selection-end-line="138" selection-end-column="87" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/StringSchema.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3BaseSchema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+        <state relative-caret-position="126">
+          <caret line="9" column="22" lean-forward="false" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/additionalProperties.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-522">
+          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-unit/3.5.1-SNAPSHOT/vertx-unit-3.5.1-SNAPSHOT.jar!/io/vertx/ext/unit/Async.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="15" column="9" lean-forward="false" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+          <folding>
+            <marker date="1518597039000" expanded="false" signature="0:104" ph="/.../" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-core/3.5.1-SNAPSHOT/vertx-core-3.5.1-SNAPSHOT-sources.jar!/io/vertx/core/Future.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="116" column="12" lean-forward="false" selection-start-line="116" selection-start-column="12" selection-end-line="116" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/Schema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="15" column="14" lean-forward="false" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/TestVerticle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-502">
+          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/additionalItems.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-916">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/refRemote.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-core/3.5.1-SNAPSHOT/vertx-core-3.5.1-SNAPSHOT-sources.jar!/io/vertx/core/json/JsonArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="37" column="23" lean-forward="false" selection-start-line="37" selection-start-column="23" selection-end-line="37" selection-end-column="23" />
+          <folding>
+            <element signature="e#15772#15773#0" expanded="true" />
+            <element signature="e#15814#15815#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/io/vertx/vertx-core/3.5.1-SNAPSHOT/vertx-core-3.5.1-SNAPSHOT-sources.jar!/io/vertx/core/json/JsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="225" column="10" lean-forward="true" selection-start-line="225" selection-start-column="10" selection-end-line="225" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/io/vertx/ext/json/validator/schema/oas3/OAS3SchemaParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-522">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#592#593#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/const.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/openapi3/multipleOf.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/io/vertx/ext/json/validator/schema/oas3/OAS3IntegrationTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="191" column="0" lean-forward="false" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
   </component>
   <component name="masterDetails">
     <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>jquery</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>vertx-json-validator-poc</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.26775956" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
       <state key="ProjectJDKs.UI">
         <settings>
           <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: com.fasterxml.jackson.core:jackson-annotations:2.9.0</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
