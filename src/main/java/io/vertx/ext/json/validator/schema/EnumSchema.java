@@ -6,6 +6,7 @@ import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -16,7 +17,7 @@ public class EnumSchema extends BaseSchema<Object> {
 
     public EnumSchema(JsonObject obj, SchemaParser parser) {
         super(obj, parser);
-        assignArray("enum", "allowedValues", JsonArray::getList);
+        assignArray("enum", "allowedValues", a -> a.stream().collect(Collectors.toList()));
     }
 
     public List<Object> getAllowedValues() {
@@ -28,8 +29,8 @@ public class EnumSchema extends BaseSchema<Object> {
     }
 
     @Override
-    public Future<Object> checkType(Object obj) {
-        return Future.succeededFuture(obj); // We don't check the type of the obj, enum can be of every type we want
+    public Object checkType(Object obj) {
+        return obj; // We don't check the type of the obj, enum can be of every type we want
     }
 
     @Override

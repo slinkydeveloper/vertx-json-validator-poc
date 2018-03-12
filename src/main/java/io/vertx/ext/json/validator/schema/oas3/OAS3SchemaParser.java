@@ -49,6 +49,7 @@ public class OAS3SchemaParser extends SchemaParser {
                 "properties",
                 "additionalProperties"
         ));
+        keywordsMap.put(EnumSchema.class, Arrays.asList("enum"));
         //TODO fill with other keywords?
     }
 
