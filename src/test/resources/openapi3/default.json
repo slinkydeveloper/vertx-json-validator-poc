@@ -45,5 +45,29 @@
                 "valid": true
             }
         ]
+    },
+    {
+        "description": "default should not override required",
+        "schema": {
+            "properties": {
+                "bar": {
+                    "type": "string",
+                    "default": "bla"
+                }
+            },
+            "required": ["bar"]
+        },
+        "tests": [
+            {
+                "description": "valid when property is specified",
+                "data": {"bar": "good"},
+                "valid": true
+            },
+            {
+                "description": "still valid when the invalid default is used",
+                "data": {},
+                "valid": false
+            }
+        ]
     }
 ]

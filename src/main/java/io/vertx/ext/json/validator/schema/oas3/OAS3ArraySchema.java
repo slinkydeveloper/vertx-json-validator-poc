@@ -23,8 +23,8 @@ public class OAS3ArraySchema extends ArraySchema {
                 .<JsonObject>getOptional("items", JsonObject.class)
                 .map(in -> (BaseSchema)this.getParser().parse(in))
                 .orElseGet(() -> null);
-        return (itemSchema != null) ? in ->
-                CompositeFuture
+        return (itemSchema != null) ?
+                in -> CompositeFuture
                         .all(in.stream().map(itemSchema::validate).collect(Collectors.toList()))
                         .map(cf -> new JsonArray(cf.list())) : Future::succeededFuture;
     }
