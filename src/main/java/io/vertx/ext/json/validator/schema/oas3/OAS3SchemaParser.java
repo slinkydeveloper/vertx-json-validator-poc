@@ -38,7 +38,7 @@ public class OAS3SchemaParser extends SchemaParser {
                 "minLength",
                 "pattern"
         ));
-        keywordsMap.put(ArraySchema.class, Arrays.asList(
+        keywordsMap.put(OAS3ArraySchema.class, Arrays.asList(
                 "items",
                 "maxItems",
                 "minItems",
@@ -92,6 +92,8 @@ public class OAS3SchemaParser extends SchemaParser {
                         return OAS3StringSchema.class;
                     case "object":
                         return OAS3ObjectSchema.class;
+                    case "array":
+                        return OAS3ArraySchema.class;
                     case "boolean":
                         return BooleanSchema.class;
                     default:

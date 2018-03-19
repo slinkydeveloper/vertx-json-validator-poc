@@ -36,7 +36,7 @@ public abstract class BaseSchema<T> extends ReflectedSchema implements Schema<T>
 
     }
 
-    Object getDefaultValue() {
+    public Object getDefaultValue() {
         return this.preValidationSchema.getDefaultValue();
     }
 

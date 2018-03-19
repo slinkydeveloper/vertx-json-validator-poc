@@ -1,12 +1,9 @@
 package io.vertx.ext.json.validator.schema;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
-import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.util.*;
 import java.util.function.Function;
@@ -19,27 +16,22 @@ import java.util.AbstractMap.SimpleImmutableEntry;
  */
 public abstract class ObjectSchema extends BaseSchema<JsonObject> {
 
-    private HashSet<String> required;
-    private LinkedHashMap<String, BaseSchema> validators;
-    private Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> additionalPropertiesValidator;
-    private boolean applyDefaultValues;
+    protected HashSet<String> required;
+    protected LinkedHashMap<String, BaseSchema> validators;
+    protected Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> additionalPropertiesValidator;
+    protected boolean applyDefaultValues;
 
     public ObjectSchema(JsonObject schema, SchemaParser parser) {
         super(schema, parser);
         assignArray("required", "required", (json) -> json.stream().map(String.class::cast).collect(Collectors.toSet()), HashSet.class, true);
-        assignObject("properties", "validators", LinkedHashMap.class,
-                obj -> obj.stream()
-                    .map(e -> new SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue())))
-                    .collect(Utils.entriesToLinkedMap()), true);
         additionalPropertiesValidator = buildAdditionalPropertiesValidator(schema.getValue("additionalProperties"));
-        applyDefaultValues = validators.values().stream().map(BaseSchema::getDefaultValue).filter(Objects::nonNull).count() > 0;
     }
 
     public void setRequired(HashSet<String> required) {
         this.required = required;
     }
 
-    public Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> buildAdditionalPropertiesValidator(Object additionalProperties) {
+    private Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> buildAdditionalPropertiesValidator(Object additionalProperties) {
         if (additionalProperties == null)
             return in -> Future.succeededFuture(in);
         else if (additionalProperties instanceof Boolean) {
@@ -67,19 +59,13 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
         return (BaseSchema) this.getParser().parse(object);
     }
 
+    protected abstract Future<Map.Entry<String, Object>> validateInputProperty(Map.Entry<String, Object> jsonEntry);
+
     @Override
     public Future<JsonObject> validationLogic(JsonObject in) {
-        final Set<String> scannedKnownRequiredProperties = new HashSet<>();
-        List<Future> propertiesValidationResult = in.stream().map((Map.Entry<String, Object> jsonEntry) -> {
-            String key = jsonEntry.getKey();
-            if (validators.containsKey(key)) {
-                return validators.get(key).validate(jsonEntry.getValue()).map(r -> new SimpleImmutableEntry<>(key, r));
-            } else { // in a far future check if pattern properties
-                return additionalPropertiesValidator.apply(new SimpleImmutableEntry<>(key, jsonEntry.getValue()));
-            }
-        }).collect(Collectors.toList());
+        List<Future> propertiesValidationResult = in.stream().map(this::validateInputProperty).collect(Collectors.toList());
         return CompositeFuture.all(propertiesValidationResult).compose(cf -> {
-            if (!in.fieldNames().containsAll(required)) // Check additionalProperties
+            if (!in.fieldNames().containsAll(required)) // Check required properties
                 return Future.failedFuture("Missing properties " + Utils.collectionDifference(required, in.fieldNames()));
             else {
                 JsonObject out = cf.list()

@@ -77,8 +77,22 @@ public class Utils {
         return a.stream().filter(s -> !b.contains(s));
     }
 
-    static <T> T nullSupplier() {
-        return null;
+    public static boolean  distinctValues(Iterable<Object> objs){
+        Set<Object> foundObjects = new HashSet<>();
+        for(Object o : objs){
+            if(foundObjects.contains(o)){
+                return false;
+            }
+            foundObjects.add(o);
+        }
+        return true;
+    }
+
+    public static <T> Function<T, T> consumerToFunction(Consumer<T> c) {
+        return in -> {
+            c.accept(in);
+            return in;
+        };
     }
 
 }

@@ -119,7 +119,7 @@ public abstract class ReflectedSchema {
         }
     }
 
-    protected <T> T get(String propertyName, Class c) {
+    <T> T get(String propertyName, Class c) {
         try {
             return (T)c.cast(this.getOriginalJson().getValue(propertyName));
         } catch (ClassCastException e) {
@@ -129,7 +129,7 @@ public abstract class ReflectedSchema {
 
     protected <T> Optional<T> getOptional(String propertyName, Class c) {
         try {
-            return Optional.of((T)c.cast(this.getOriginalJson().getValue(propertyName)));
+            return Optional.ofNullable((T)c.cast(this.getOriginalJson().getValue(propertyName)));
         } catch (ClassCastException e) {
             throw new IllegalArgumentException("Wrong type for property " + propertyName);
         }
