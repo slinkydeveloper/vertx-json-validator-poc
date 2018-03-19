@@ -33,7 +33,7 @@ public class OAS3SchemaParser extends SchemaParser {
                 "minimum",
                 "exclusiveMinimum"
         ));
-        keywordsMap.put(OAS3StringSchema.class, Arrays.asList(
+        keywordsMap.put(StringSchema.class, Arrays.asList(
                 "maxLength",
                 "minLength",
                 "pattern"
@@ -52,6 +52,7 @@ public class OAS3SchemaParser extends SchemaParser {
                 "maxProperties"
         ));
         keywordsMap.put(EnumSchema.class, Arrays.asList("enum"));
+        keywordsMap.put(NotSchema.class, Arrays.asList("not"));
         //TODO fill with other keywords?
     }
 
@@ -84,6 +85,8 @@ public class OAS3SchemaParser extends SchemaParser {
         } else {
             if (obj.containsKey("enum")) {
                 return EnumSchema.class;
+            } else if (obj.containsKey("not")){
+                return NotSchema.class;
             } else {
                 switch (type) {
                     case "integer":
@@ -91,7 +94,7 @@ public class OAS3SchemaParser extends SchemaParser {
                     case "number":
                         return solveFloatingPointType(obj);
                     case "string":
-                        return OAS3StringSchema.class;
+                        return StringSchema.class;
                     case "object":
                         return OAS3ObjectSchema.class;
                     case "array":
@@ -99,7 +102,7 @@ public class OAS3SchemaParser extends SchemaParser {
                     case "boolean":
                         return BooleanSchema.class;
                     default:
-                        return OAS3StringSchema.class; // Should throw an error here!
+                        return MissingTypeSchema.class; // Should throw an error here!
                 }
             }
         }

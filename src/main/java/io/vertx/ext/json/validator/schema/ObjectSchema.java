@@ -38,7 +38,7 @@ public abstract class ObjectSchema extends BaseSchema<JsonObject> {
             checkers.add(buildMinPropertiesChecker(minItems));
         if (maxItems != null)
             checkers.add(buildMaxPropertiesChecker(maxItems));
-        this.checkers = Utils.composeCheckers(checkers).get();
+        this.checkers = Utils.composeCheckers(checkers).orElse(null);
     }
 
     private Consumer<JsonObject> buildMinPropertiesChecker(final Integer minProperties) {

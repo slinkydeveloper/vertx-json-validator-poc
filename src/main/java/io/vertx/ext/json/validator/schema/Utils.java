@@ -95,4 +95,34 @@ public class Utils {
         };
     }
 
+    //TODO to remove when the change on core will be merged
+    public static <T, U> Future<U> andThen(Future<T> fut, Function<T, Future<U>> completionMapper, Function<Throwable, Future<U>> failureMapper) {
+        if (completionMapper == null || failureMapper == null) {
+            throw new NullPointerException();
+        }
+        Future<U> ret = Future.future();
+        fut.setHandler(ar -> {
+            if (ar.succeeded()) {
+                Future<U> apply;
+                try {
+                    apply = completionMapper.apply(ar.result());
+                } catch (Throwable e) {
+                    ret.fail(e);
+                    return;
+                }
+                apply.setHandler(ret);
+            } else {
+                Future<U> apply;
+                try {
+                    apply = failureMapper.apply(ar.cause());
+                } catch (Throwable e) {
+                    ret.fail(e);
+                    return;
+                }
+                apply.setHandler(ret);
+            }
+        });
+        return ret;
+    }
+
 }

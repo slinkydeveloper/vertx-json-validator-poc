@@ -49,7 +49,7 @@ public abstract class BaseSchema<T> extends ReflectedSchema implements Schema<T>
 
     abstract Future<T> validationLogic(T obj);
 
-    public T checkType(Object obj) {
+    protected T checkType(Object obj) {
         if (getRequiredType().isInstance(obj)) {
             return (T)obj;
         } else {

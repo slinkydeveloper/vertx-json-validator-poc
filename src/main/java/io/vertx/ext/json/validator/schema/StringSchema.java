@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
-public abstract class StringSchema extends BaseSchema<String> {
+public class StringSchema extends BaseSchema<String> {
 
     private Optional<Consumer<String>> checkStringProperties;
 

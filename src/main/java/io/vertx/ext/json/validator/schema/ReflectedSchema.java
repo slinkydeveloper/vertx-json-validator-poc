@@ -145,5 +145,15 @@ public abstract class ReflectedSchema {
             throw new IllegalArgumentException("Wrong type for property " + propertyName);
         }
     }
+    protected <T, R> R getRequired(String propertyName, Class c, Function<T, R> map) {
+        try {
+            Object v = this.getOriginalJson().getValue(propertyName);
+            if (v == null)
+                throw new IllegalArgumentException("Missing property " + propertyName);
+            return map.apply((T)c.cast(v));
+        } catch (ClassCastException e) {
+            throw new IllegalArgumentException("Wrong type for property " + propertyName);
+        }
+    }
 
 }
