@@ -33,12 +33,12 @@ public abstract class StringSchema extends BaseSchema<String> {
             });
         if (maxLength != null)
             checkers.add((value) -> {
-                if (!(value.length() <= maxLength))
+                if (value.codePointCount(0, value.length()) > maxLength)
                     throw ValidationExceptionFactory.generateNotMatchValidationException("String should have max length of " + maxLength);
             });
         if (minLength != null)
             checkers.add((value) -> {
-                if (!(value.length() >= minLength))
+                if (value.codePointCount(0, value.length()) < minLength)
                     throw ValidationExceptionFactory.generateNotMatchValidationException("String should have min length of " + minLength);
             });
 
