@@ -1,94 +1,102 @@
 package io.vertx.ext.json.validator.schema;
 
-import com.fasterxml.jackson.databind.ser.Serializers;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
-import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
+import sun.java2d.pipe.SpanShapeRenderer;
 
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+
+import java.util.AbstractMap.SimpleImmutableEntry;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
 public abstract class ObjectSchema extends BaseSchema<JsonObject> {
 
-    private List<String> required;
-    private LinkedList<Function<JsonObject, Future<Optional<Map.Entry<String, Object>>>>> validators;
+    private HashSet<String> required;
+    private LinkedHashMap<String, BaseSchema> validators;
+    private Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> additionalPropertiesValidator;
+    private boolean applyDefaultValues;
 
     public ObjectSchema(JsonObject schema, SchemaParser parser) {
         super(schema, parser);
-        assignArray("required", "required", (json) -> json.stream().map(String.class::cast).collect(Collectors.toList()));
-        assignObject("properties", "validators", LinkedList.class, //TODO missing properties keyword?
+        assignArray("required", "required", (json) -> json.stream().map(String.class::cast).collect(Collectors.toSet()), HashSet.class, true);
+        assignObject("properties", "validators", LinkedHashMap.class,
                 obj -> obj.stream()
-                    .map(e -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue())))
-                    .map(this::buildValidator)
-                    .collect(Collectors.toCollection(LinkedList::new)));
-        //TODO additionalProperties
-
+                    .map(e -> new SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue())))
+                    .collect(Utils.entriesToLinkedMap()), true);
+        additionalPropertiesValidator = buildAdditionalPropertiesValidator(schema.getValue("additionalProperties"));
+        applyDefaultValues = validators.values().stream().map(BaseSchema::getDefaultValue).filter(Objects::nonNull).count() > 0;
     }
 
-    public LinkedList<Function<JsonObject, Future<Optional<Map.Entry<String, Object>>>>> getValidators() {
-        return validators;
-    }
-
-    public void setRequired(List<String> required) {
+    public void setRequired(HashSet<String> required) {
         this.required = required;
     }
 
-    public void setValidators(LinkedList<Function<JsonObject, Future<Optional<Map.Entry<String, Object>>>>> validators) {
-        this.validators = validators;
+    public Function<Map.Entry<String, Object>, Future<Map.Entry<String, Object>>> buildAdditionalPropertiesValidator(Object additionalProperties) {
+        if (additionalProperties == null)
+            return in -> Future.succeededFuture(in);
+        else if (additionalProperties instanceof Boolean) {
+            if (((Boolean) additionalProperties))
+                return in -> Future.succeededFuture(in);
+            else
+                return in -> Future.failedFuture(ValidationExceptionFactory.generateNotMatchValidationException(
+                        in.getKey() + "is an illegal keyword. Additional properties are not allowed")
+                );
+        } else if (additionalProperties instanceof JsonObject) {
+            final Schema schema = this.parseProperty((JsonObject) additionalProperties);
+            return in -> schema.validate(in.getValue()).map(out -> new SimpleImmutableEntry<>(in.getKey(), out));
+        } else
+            throw new IllegalArgumentException("You specified an illegal additionalProperties keyword");
+    }
+
+    public void setValidators(LinkedHashMap<String, BaseSchema> validators) {
+        if (validators != null)
+            this.validators = validators;
+        else
+            this.validators = new LinkedHashMap<>();
     }
 
     protected BaseSchema parseProperty(JsonObject object) {
         return (BaseSchema) this.getParser().parse(object);
-    };
-
-    private Function<JsonObject, Future<Optional<Map.Entry<String, Object>>>> buildValidator(Map.Entry<String, BaseSchema> e) {
-        String propertyName = e.getKey();
-        BaseSchema schema = e.getValue();
-        boolean r = Optional.ofNullable(required).map(l -> l.contains(propertyName)).orElse(false);
-
-        return (JsonObject in) -> {
-            if (in.containsKey(propertyName)) {
-                return schema
-                        .validate(in.getValue(propertyName))
-                        .map(res ->
-                                Optional.of(new AbstractMap.SimpleImmutableEntry<>(propertyName, res))
-                        );
-            } else if (schema.getDefaultValue() != null) {
-                return Future.succeededFuture(Optional.of(
-                        new AbstractMap.SimpleImmutableEntry<>(propertyName, schema.getDefaultValue())
-                ));
-            } else if (r) {
-                return Future.failedFuture(ValidationExceptionFactory
-                        .generateNotMatchValidationException("Param " + propertyName + " required but not found")
-                );
-            } else {
-                return Future.succeededFuture(Optional.empty());
-            }
-        };
-    }
-
-    private Future<JsonObject> composer(CompositeFuture fut) {
-        return Future.succeededFuture(
-            fut.list().stream()
-                    .map(Optional.class::cast)
-                    .filter(Optional::isPresent)
-                    .map(Optional::get)
-                    .map(Map.Entry.class::cast)
-                    .map(e -> new JsonObject().put((String)e.getKey(), e.getValue()))
-                    .reduce(new JsonObject(), JsonObject::mergeIn)
-        );
     }
 
     @Override
-    public Future<JsonObject> validationLogic(JsonObject jsonObject) {
-        List<Future> futs = validators.stream().map(f -> f.apply(jsonObject)).collect(Collectors.toList());
-        return CompositeFuture.all(futs).compose(this::composer);
+    public Future<JsonObject> validationLogic(JsonObject in) {
+        final Set<String> scannedKnownRequiredProperties = new HashSet<>();
+        List<Future> propertiesValidationResult = in.stream().map((Map.Entry<String, Object> jsonEntry) -> {
+            String key = jsonEntry.getKey();
+            if (validators.containsKey(key)) {
+                return validators.get(key).validate(jsonEntry.getValue()).map(r -> new SimpleImmutableEntry<>(key, r));
+            } else { // in a far future check if pattern properties
+                return additionalPropertiesValidator.apply(new SimpleImmutableEntry<>(key, jsonEntry.getValue()));
+            }
+        }).collect(Collectors.toList());
+        return CompositeFuture.all(propertiesValidationResult).compose(cf -> {
+            if (!in.fieldNames().containsAll(required)) // Check additionalProperties
+                return Future.failedFuture("Missing properties " + Utils.collectionDifference(required, in.fieldNames()));
+            else {
+                JsonObject out = cf.list()
+                        .stream()
+                        .map(Map.Entry.class::cast)
+                        .reduce(new JsonObject(), (json, entry) -> json.put((String)entry.getKey(), entry.getValue()), JsonObject::mergeIn);
+                if (applyDefaultValues) {
+                    Set<String> missingProperties = Utils.collectionDifference(validators.keySet(), in.fieldNames()).collect(Collectors.toSet());
+                    for (String missingProperty : missingProperties) {
+                        BaseSchema s = validators.get(missingProperty);
+                        if (s.getDefaultValue() != null)
+                            out.put(missingProperty, s.getDefaultValue());
+                    }
+                }
+                return Future.succeededFuture(out);
+            }
+        });
     }
 
     @Override

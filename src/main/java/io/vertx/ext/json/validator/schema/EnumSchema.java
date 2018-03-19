@@ -17,7 +17,7 @@ public class EnumSchema extends BaseSchema<Object> {
 
     public EnumSchema(JsonObject obj, SchemaParser parser) {
         super(obj, parser);
-        assignArray("enum", "allowedValues", a -> a.stream().collect(Collectors.toList()));
+        assignArray("enum", "allowedValues", a -> a.stream().collect(Collectors.toList()), List.class, false);
     }
 
     public List<Object> getAllowedValues() {

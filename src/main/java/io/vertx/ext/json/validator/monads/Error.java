@@ -18,4 +18,9 @@ class Error<E extends Throwable> extends ValidationStep<Object, Object, E> {
     public Future<Object> getOrGoFurtherFuture(Function<Object, Future<Object>> fn) {
         return Future.failedFuture(param);
     }
+
+    @Override
+    public boolean shouldGoFurther() {
+        return true;
+    }
 }

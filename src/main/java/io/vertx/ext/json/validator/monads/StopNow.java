@@ -18,4 +18,9 @@ class StopNow<S, R> extends ValidationStep<S, R, Throwable> {
     public Future<R> getOrGoFurtherFuture(Function<S, Future<R>> fn) {
         return Future.succeededFuture(param);
     }
+
+    @Override
+    public boolean shouldGoFurther() {
+        return false;
+    }
 }

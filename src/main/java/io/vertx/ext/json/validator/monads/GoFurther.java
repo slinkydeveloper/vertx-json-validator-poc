@@ -18,4 +18,9 @@ class GoFurther<S, R> extends ValidationStep<S, R, Throwable> {
     public Future<R> getOrGoFurtherFuture(Function<S, Future<R>> fn) {
         return fn.apply(param);
     }
+
+    @Override
+    public boolean shouldGoFurther() {
+        return true;
+    }
 }
