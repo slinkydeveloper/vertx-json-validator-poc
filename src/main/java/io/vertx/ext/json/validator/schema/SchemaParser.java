@@ -38,6 +38,11 @@ public abstract class SchemaParser {
         return this.instantiateSchema(this.solveType(obj), obj);
     }
 
+    public Schema parse(JsonObject obj, String defaultType) {
+        if (!obj.containsKey("type")) obj.put("type", defaultType);
+        return this.instantiateSchema(this.solveType(obj), obj);
+    }
+
     // The "type" keyword in oas can be a single type, when in draft-7 can be an array of types!
     public abstract Class<? extends Schema> solveType(JsonObject obj);
 

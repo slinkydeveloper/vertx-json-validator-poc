@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.schema.AllOfSchema;
 import io.vertx.ext.json.validator.schema.Schema;
 import io.vertx.ext.unit.TestContext;
 import io.vertx.ext.unit.junit.VertxUnitRunner;
@@ -27,6 +28,17 @@ public class OAS3DefaultTest extends OAS3ManualTest {
             assertThat(((JsonObject) result).getJsonObject("object")).isEqualTo(new JsonObject().put("hello", "francesco"));
             assertThat(((JsonObject) result).containsKey("array")).isTrue();
             assertThat(((JsonObject) result).getJsonArray("array")).isEqualTo(new JsonArray().add("bla"));
+        }));
+    }
+
+    @Test
+    public void allOfDefaultValues(TestContext context) throws IOException {
+        Schema s = loadSchema("allOfDeepDefault.json");
+        assertThat(s).isInstanceOf(AllOfSchema.class);
+        s.validate(new JsonObject().put("a", new JsonObject()).put("b", new JsonObject())).setHandler(context.asyncAssertSuccess(result -> {
+            testJsonParameter(result, "/a/a", String.class, "deep_a");
+            testJsonParameter(result, "/b/b", String.class, "deep_b");
+            testJsonParameter(result, "/c", String.class, "c");
         }));
     }
 

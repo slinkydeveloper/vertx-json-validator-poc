@@ -53,6 +53,7 @@ public class OAS3SchemaParser extends SchemaParser {
         ));
         keywordsMap.put(EnumSchema.class, Arrays.asList("enum"));
         keywordsMap.put(NotSchema.class, Arrays.asList("not"));
+        keywordsMap.put(AllOfSchema.class, Arrays.asList("allOf"));
         //TODO fill with other keywords?
     }
 
@@ -63,7 +64,7 @@ public class OAS3SchemaParser extends SchemaParser {
             return constructor.newInstance(obj, this);
         } catch (Exception e) {
             // Something happened during schema instantiation (wrong schema)
-            System.out.println("Wrong schema! " + e);
+            System.out.println("Wrong schema! " + e.getCause());
             e.printStackTrace();
             return null;
         }
@@ -80,31 +81,31 @@ public class OAS3SchemaParser extends SchemaParser {
     @Override
     public Class<? extends Schema> solveType(JsonObject obj) {
         String type = obj.getString("type");
-        if (type == null) {
-            return MissingTypeSchema.class;
-        } else {
-            if (obj.containsKey("enum")) {
-                return EnumSchema.class;
-            } else if (obj.containsKey("not")){
-                return NotSchema.class;
-            } else {
-                switch (type) {
-                    case "integer":
-                        return solveIntegerType(obj);
-                    case "number":
-                        return solveFloatingPointType(obj);
-                    case "string":
-                        return StringSchema.class;
-                    case "object":
-                        return OAS3ObjectSchema.class;
-                    case "array":
-                        return OAS3ArraySchema.class;
-                    case "boolean":
-                        return BooleanSchema.class;
-                    default:
-                        return MissingTypeSchema.class; // Should throw an error here!
-                }
+        if (obj.containsKey("enum")) {
+            return EnumSchema.class;
+        } else if (obj.containsKey("not")){
+            return NotSchema.class;
+        } else if (obj.containsKey("allOf")) {
+            return AllOfSchema.class;
+        } else if (type != null) {
+            switch (type) {
+                case "integer":
+                    return solveIntegerType(obj);
+                case "number":
+                    return solveFloatingPointType(obj);
+                case "string":
+                    return StringSchema.class;
+                case "object":
+                    return OAS3ObjectSchema.class;
+                case "array":
+                    return OAS3ArraySchema.class;
+                case "boolean":
+                    return BooleanSchema.class;
+                default:
+                    return MissingTypeSchema.class; // Should throw an error here!
             }
+        } else {
+            return MissingTypeSchema.class;
         }
     }
 
