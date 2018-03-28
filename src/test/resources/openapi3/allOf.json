@@ -56,7 +56,7 @@
                 },
                 {
                     "properties": {
-                        "baz": {"type": "null"}
+                        "baz": {"type": "string", "nullable": true}
                     },
                     "required": ["baz"]
                 }

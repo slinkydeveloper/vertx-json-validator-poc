@@ -22,12 +22,9 @@ public class MissingTypeSchema extends BaseSchema<Object>{
     public MissingTypeSchema(JsonObject obj, SchemaParser parser) {
         super(obj, parser);
         // Now crazy stuff happens
-        internalSchemas = parser.getKeywordsMap().entrySet()
+        internalSchemas = parser.solveMissingTypeSchemas(obj)
                 .stream()
-                .map(e -> (Utils.containsAtLeastOneKey(obj, e.getValue()))
-                        ? parser.instantiateSchema(e.getKey(), obj)
-                        : null)
-                .filter(Objects::nonNull)
+                .map(e -> parser.instantiateSchema(e, obj))
                 .map(BaseSchema.class::cast)
                 .collect(Collectors.toList());
 

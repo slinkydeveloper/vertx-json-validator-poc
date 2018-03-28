@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -15,17 +16,17 @@ public abstract class SchemaParser {
     protected final JsonObject schemaRoot;
     protected final String scope;
     protected final Map<String, Schema> refsCache;
+    protected final SchemaParserProperties properties;
 
-    public SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
+    public SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache, SchemaParserProperties properties) {
         this.schemaRoot = schemaRoot;
         this.scope = scope;
         this.refsCache = refsCache;
+        this.properties = properties;
     }
 
     public SchemaParser(JsonObject schemaRoot, String scope) {
-        this.schemaRoot = schemaRoot;
-        this.scope = scope;
-        this.refsCache = new HashMap<>();
+        this(schemaRoot, scope, new HashMap<>(), new SchemaParserProperties());
     }
 
     public Schema parse() {
@@ -57,4 +58,13 @@ public abstract class SchemaParser {
     public abstract <T> PreValidationSchema buildPreValidationLogic(JsonObject jsonSchema, BaseSchema<T> schema);
 
     public abstract PostValidationSchema buildPostValidationLogic(JsonObject schema);
+
+    public List<Class<? extends Schema>> solveMissingTypeSchemas(JsonObject obj) {
+        return getKeywordsMap()
+                .entrySet()
+                .stream()
+                .filter(e -> Utils.containsAtLeastOneKey(obj, e.getValue()))
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
 }

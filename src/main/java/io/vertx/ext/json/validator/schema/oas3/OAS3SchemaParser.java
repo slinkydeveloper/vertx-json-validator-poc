@@ -1,11 +1,13 @@
 package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.WrongSchemaException;
 import io.vertx.ext.json.validator.schema.*;
 
 import java.lang.reflect.Constructor;
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -15,11 +17,11 @@ public class OAS3SchemaParser extends SchemaParser {
     Map<Class<? extends Schema>, List<String>> keywordsMap;
 
     public OAS3SchemaParser(JsonObject schemaRoot, String scope) {
-        this(schemaRoot, scope, new HashMap<>());
+        this(schemaRoot, scope, new HashMap<>(), new SchemaParserProperties());
     }
 
-    public OAS3SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache) {
-        super(schemaRoot, scope, refsCache);
+    public OAS3SchemaParser(JsonObject schemaRoot, String scope, Map<String, Schema> refsCache, SchemaParserProperties properties) {
+        super(schemaRoot, scope, refsCache, properties);
         keywordsMap = new HashMap<>();
         fillKeywordsMap();
     }
@@ -66,7 +68,10 @@ public class OAS3SchemaParser extends SchemaParser {
             // Something happened during schema instantiation (wrong schema)
             System.out.println("Wrong schema! " + e.getCause());
             e.printStackTrace();
-            return null;
+            if (e.getCause() instanceof WrongSchemaException)
+                throw (WrongSchemaException)e.getCause();
+            else
+                throw new WrongSchemaException(e.getMessage(), e.getCause());
         }
     }
 
@@ -105,13 +110,22 @@ public class OAS3SchemaParser extends SchemaParser {
                     return MissingTypeSchema.class; // Should throw an error here!
             }
         } else {
-            return MissingTypeSchema.class;
+            if (properties.isForceTypeKeywordInference()) {
+                return inferType(obj);
+            } else
+                return MissingTypeSchema.class;
         }
     }
 
     @Override
     public Class<? extends Schema> inferType(JsonObject obj) {
-        return MissingTypeSchema.class;
+        List<Class<? extends Schema>> schemas = solveMissingTypeSchemas(obj);
+        if (schemas.size() == 1)
+            return schemas.get(0);
+        else if (schemas.size() > 1)
+            return MissingTypeSchema.class;
+        else
+            throw new IllegalArgumentException("Cannot infer type");
     }
 
     @Override

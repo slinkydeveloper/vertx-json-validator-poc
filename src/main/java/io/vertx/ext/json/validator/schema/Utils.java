@@ -66,7 +66,7 @@ public class Utils {
         return obj.fieldNames().containsAll(keys);
     }
 
-    static boolean containsAtLeastOneKey(JsonObject obj, List<String> keys) {
+    public static boolean containsAtLeastOneKey(JsonObject obj, List<String> keys) {
         return keys
                 .stream()
                 .map(obj::containsKey)

@@ -29,6 +29,14 @@
         "c": {
           "type": "string",
           "default": "c"
+        },
+        "a": {
+          "type": "object",
+          "properties": {
+            "a": {
+              "type": "string"
+            }
+          }
         }
       }
     }

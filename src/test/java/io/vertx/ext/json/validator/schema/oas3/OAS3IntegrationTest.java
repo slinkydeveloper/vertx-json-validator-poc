@@ -3,6 +3,7 @@ package io.vertx.ext.json.validator.schema.oas3;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.json.validator.schema.BaseIntegrationTest;
 import io.vertx.ext.json.validator.schema.Schema;
+import io.vertx.ext.json.validator.schema.SchemaParserProperties;
 import org.assertj.core.util.Lists;
 import org.junit.runners.Parameterized;
 
@@ -54,7 +55,7 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
 
     @Override
     public Schema buildSchemaFunction(JsonObject schema) {
-        return Schema.parseOAS3Schema(schema, getSchemasPath());
+        return Schema.parseOAS3Schema(schema, getSchemasPath(), SchemaParserProperties.STRICT);
     }
 
     @Override

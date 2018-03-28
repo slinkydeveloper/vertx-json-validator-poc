@@ -2,6 +2,8 @@ package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.ext.json.validator.ValidationException;
+import io.vertx.ext.json.validator.WrongSchemaException;
 import io.vertx.ext.json.validator.schema.AllOfSchema;
 import io.vertx.ext.json.validator.schema.Schema;
 import io.vertx.ext.unit.TestContext;
@@ -10,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 
 import static org.assertj.core.api.Assertions.*;
 
@@ -29,6 +32,14 @@ public class OAS3DefaultTest extends OAS3ManualTest {
             assertThat(((JsonObject) result).containsKey("array")).isTrue();
             assertThat(((JsonObject) result).getJsonArray("array")).isEqualTo(new JsonArray().add("bla"));
         }));
+    }
+
+    @Test
+    public void defaultShouldBeSameType(TestContext context) throws Throwable {
+        assertThatThrownBy(() -> Schema.parseOAS3Schema(new JsonObject().put("type", "string").put("default", 0), ""))
+                .isInstanceOf(WrongSchemaException.class)
+                .hasCauseInstanceOf(ValidationException.class);
+        //TODO Should create an exception for schema creation exception
     }
 
     @Test
