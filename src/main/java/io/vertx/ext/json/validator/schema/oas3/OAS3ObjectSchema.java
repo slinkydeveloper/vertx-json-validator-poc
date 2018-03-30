@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.schema.*;
 
 import java.util.*;
@@ -11,11 +12,11 @@ import java.util.*;
  */
 public class OAS3ObjectSchema extends ObjectSchema {
 
-    public OAS3ObjectSchema(JsonObject schema, SchemaParser parser) {
-        super(schema, parser);
+    public OAS3ObjectSchema(JsonObject schema, SchemaParser parser, JsonPointer pointer) {
+        super(schema, parser, pointer);
         assignObject("properties", "validators", LinkedHashMap.class,
                 obj -> obj.stream()
-                        .map(e -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue())))
+                        .map(e -> new AbstractMap.SimpleImmutableEntry<>(e.getKey(), this.parseProperty((JsonObject)e.getValue(), e.getKey())))
                         .collect(Utils.entriesToLinkedMap()), true);
         applyDefaultValues = validators.values().stream().map(BaseSchema::getDefaultValue).filter(Objects::nonNull).count() > 0;
     }

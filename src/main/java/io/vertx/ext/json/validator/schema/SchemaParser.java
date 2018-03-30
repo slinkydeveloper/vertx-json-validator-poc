@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,18 +31,18 @@ public abstract class SchemaParser {
     }
 
     public Schema parse() {
-        return this.parse(schemaRoot);
+        return this.parse(schemaRoot, JsonPointer.create());
     }
 
-    public abstract Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj);
+    public abstract Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj, JsonPointer pointer);
 
-    public Schema parse(JsonObject obj) {
-        return this.instantiateSchema(this.solveType(obj), obj);
+    public Schema parse(JsonObject obj, JsonPointer pointer) {
+        return this.instantiateSchema(this.solveType(obj), obj, pointer);
     }
 
-    public Schema parse(JsonObject obj, String defaultType) {
+    public Schema parse(JsonObject obj, String defaultType, JsonPointer pointer) {
         if (!obj.containsKey("type")) obj.put("type", defaultType);
-        return this.instantiateSchema(this.solveType(obj), obj);
+        return this.instantiateSchema(this.solveType(obj), obj, pointer);
     }
 
     // The "type" keyword in oas can be a single type, when in draft-7 can be an array of types!

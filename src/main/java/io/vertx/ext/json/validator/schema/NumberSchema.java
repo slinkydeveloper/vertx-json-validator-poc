@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
@@ -16,8 +17,8 @@ import java.util.function.Consumer;
 public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
   private Optional<Consumer<Number>> checkNumberProperties;
 
-  public NumberSchema(JsonObject jsonObject, SchemaParser parser) {
-    super(jsonObject, parser);
+  public NumberSchema(JsonObject jsonObject, SchemaParser parser, JsonPointer pointer) {
+    super(jsonObject, parser, pointer);
 
     Number maximum = get("maximum", Number.class);
     Number minimum = get("minimum", Number.class);
@@ -38,12 +39,12 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
     if (exclusiveMaximum != null && exclusiveMaximum)
       return (val) -> {
         if (!(val < maximum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be < " + maximum);
+          throw ValidationExceptionFactory.generate("Number should be < " + maximum, val, pointer);
       };
     else
       return (val) -> {
         if (!(val <= maximum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be <= " + maximum);
+          throw ValidationExceptionFactory.generate("Number should be <= " + maximum, val, pointer);
       };
   }
 
@@ -51,20 +52,20 @@ public abstract class NumberSchema<T extends Number> extends BaseSchema<T> {
     if (exclusiveMinimum != null && exclusiveMinimum)
       return (val) -> {
         if (!(val > minimum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be > " + minimum);
+          throw ValidationExceptionFactory.generate("Number should be > " + minimum, val, pointer);
       };
     else
       return (val) -> {
         if (!(val >= minimum))
-          throw ValidationExceptionFactory.generateNotMatchValidationException("Number should be >= " + minimum);
+          throw ValidationExceptionFactory.generate("Number should be >= " + minimum, val, pointer);
       };
   }
 
   private Consumer<Double> buildCheckMultipleOf(final Double multipleOf) {
     return (val) -> {
       if (!(val % multipleOf == 0))
-        throw ValidationExceptionFactory.generateNotMatchValidationException(
-                "Number should be multipleOf " + multipleOf);
+        throw ValidationExceptionFactory.generate(
+                "Number should be multipleOf " + multipleOf, val, pointer);
     };
   }
 

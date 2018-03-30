@@ -1,8 +1,8 @@
 package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
-import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.List;
@@ -15,8 +15,8 @@ public class EnumSchema extends BaseSchema<Object> {
 
     List<Object> allowedValues;
 
-    public EnumSchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public EnumSchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
         assignArray("enum", "allowedValues", a -> a.stream().collect(Collectors.toList()), List.class, false);
     }
 
@@ -43,6 +43,6 @@ public class EnumSchema extends BaseSchema<Object> {
         if (getAllowedValues().contains(obj))
             return Future.succeededFuture(obj);
         else
-            return Future.failedFuture(ValidationExceptionFactory.generateNotMatchValidationException(obj.toString() + " is not an allowed value"));
+            return Future.failedFuture(ValidationExceptionFactory.generate(obj.toString() + " is not an allowed value", obj, pointer));
     }
 }

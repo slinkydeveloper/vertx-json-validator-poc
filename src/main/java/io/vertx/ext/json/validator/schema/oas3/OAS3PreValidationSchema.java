@@ -49,7 +49,7 @@ public class OAS3PreValidationSchema extends PreValidationSchema {
                 if (obj == null)
                     return ValidationStep.error(
                             ValidationExceptionFactory
-                                    .generateNotMatchValidationException("This value should not be null")
+                                    .generate("This value should not be null", getPointer())
                     );
                 else
                     return ValidationStep.goFurther(obj);

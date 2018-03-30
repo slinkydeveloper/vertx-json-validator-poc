@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator.schema.oas3;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.WrongSchemaException;
 import io.vertx.ext.json.validator.schema.*;
 
@@ -56,14 +57,15 @@ public class OAS3SchemaParser extends SchemaParser {
         keywordsMap.put(EnumSchema.class, Arrays.asList("enum"));
         keywordsMap.put(NotSchema.class, Arrays.asList("not"));
         keywordsMap.put(AllOfSchema.class, Arrays.asList("allOf"));
+        keywordsMap.put(AnyOfSchema.class, Arrays.asList("anyOf"));
         //TODO fill with other keywords?
     }
 
     @Override
-    public Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj) {
+    public Schema instantiateSchema(Class<? extends Schema> schemaClass, JsonObject obj, JsonPointer pointer) {
         try {
-            Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class);
-            return constructor.newInstance(obj, this);
+            Constructor<? extends Schema> constructor = schemaClass.getConstructor(JsonObject.class, SchemaParser.class, JsonPointer.class);
+            return constructor.newInstance(obj, this, pointer);
         } catch (Exception e) {
             // Something happened during schema instantiation (wrong schema)
             System.out.println("Wrong schema! " + e.getCause());
@@ -92,6 +94,8 @@ public class OAS3SchemaParser extends SchemaParser {
             return NotSchema.class;
         } else if (obj.containsKey("allOf")) {
             return AllOfSchema.class;
+        } else if (obj.containsKey("anyOf")) {
+            return AnyOfSchema.class;
         } else if (type != null) {
             switch (type) {
                 case "integer":

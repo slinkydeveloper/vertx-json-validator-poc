@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.Thrower;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.monads.ValidationStep;

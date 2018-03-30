@@ -1,14 +1,15 @@
 package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
 public class LongSchema extends NumberSchema<Long> {
-    public LongSchema(JsonObject jsonObject, SchemaParser parser) {
-        super(jsonObject, parser);
+    public LongSchema(JsonObject jsonObject, SchemaParser parser, JsonPointer pointer) {
+        super(jsonObject, parser, pointer);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class LongSchema extends NumberSchema<Long> {
         else if (obj instanceof Integer) {
             return ((Integer)obj).longValue();
         } else {
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Wrong type, expected " + getRequiredType());
+            throw ValidationExceptionFactory.generate("Wrong type, expected " + getRequiredType(), obj, pointer);
         }
     }
 }

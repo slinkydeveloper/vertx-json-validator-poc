@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator;
 
 import io.vertx.core.VertxException;
+import io.vertx.core.json.JsonPointer;
 
 /**
  * This is the main class for every Validation flow related errors
@@ -9,102 +10,37 @@ import io.vertx.core.VertxException;
  */
 public class ValidationException extends VertxException {
 
-  /**
-   * All errors type. You can get this values using {@link io.vertx.ext.web.api.validation.ValidationException#type()}
-   */
-  public enum ErrorType {
-    /**
-     * The provided value not match with ParameterTypeValidator rules
-     */
-    NO_MATCH, /**
-     * Parameter not found in request
-     */
-    NOT_FOUND, /**
-     * It was expected a single value, but found in request an array
-     */
-    UNEXPECTED_ARRAY, /**
-     * It was expected an array, but found in request a single value
-     */
-    UNEXPECTED_SINGLE_STRING, /**
-     * Expected file not found
-     */
-    FILE_NOT_FOUND, /**
-     * Wrong Content-Type header
-     */
-    WRONG_CONTENT_TYPE, /**
-     * Parameter found but with empty value
-     */
-    EMPTY_VALUE, /**
-     * Expected an array size between parameters configured in
-     * {@link io.vertx.ext.web.api.validation.impl.ArrayTypeValidator}
-     */
-    UNEXPECTED_ARRAY_SIZE, /**
-     * Error during deserializaton with rule provided
-     */
-    DESERIALIZATION_ERROR, /**
-     * Object field declared as required in {@link io.vertx.ext.web.api.validation.impl.ObjectTypeValidator} not found
-     */
-    OBJECT_FIELD_NOT_FOUND, /**
-     * Json can't be parsed
-     */
-    JSON_NOT_PARSABLE, /**
-     * Json doesn't match the provided schema
-     */
-    JSON_INVALID, /**
-     * XML doesn't match the provided schema
-     */
-    XML_INVALID
-  }
+  private Object value;
+  private JsonPointer pointer;
 
-  private String parameterName;
-  private String value;
-  final private ErrorType errorType;
-
-  private ValidationException(String message, String parameterName, String value, ErrorType errorType) {
-    super((message != null && message.length() != 0) ? message : "ValidationException{" + "parameterName='" +
-      parameterName + '\'' + ", value='" + value + '\'' + ", errorType=" + errorType + '}');
-    this.parameterName = parameterName;
+  public ValidationException(String message, Object value, JsonPointer pointer) {
+    super((message != null && message.length() != 0) ? message : "ValidationException{" +
+            "value='" + value + '\'' + ", pointer=" + pointer + '}');
     this.value = value;
-    this.errorType = errorType;
+    this.pointer = pointer;
   }
 
-  public ValidationException(String message, ErrorType error) {
-    this(message, null, null, error);
+  public ValidationException(String message, JsonPointer pointer) {
+    this(message, null, pointer);
   }
 
-  public ValidationException(ErrorType error) {
-    this(null, null, null, error);
-  }
-
-  public ValidationException(String message) {
-    this(message, null, null, null);
-  }
-
-  public String parameterName() {
-    return parameterName;
-  }
-
-  public String value() {
+  public Object value() {
     return value;
   }
 
-  public ErrorType type() {
-    return errorType;
+  public JsonPointer pointer() {
+    return pointer;
   }
 
-  public void setParameterName(String parameterName) {
-    this.parameterName = parameterName;
-  }
-
-  public void setValue(String value) {
-    this.value = value;
+  public void setPointer(JsonPointer pointer) {
+    this.pointer = pointer;
   }
 
   @Override
   public String toString() {
-    return "ValidationException{" + "parameterName='" + parameterName + '\'' + ", value='" + value + '\'' + ", " +
-      "errorType=" + errorType + ", message='" + getMessage() + "'}";
+    return "ValidationException{" +
+            "value='" + value + '\'' +
+            ", pointer=" + pointer +
+            '}';
   }
-
-
 }

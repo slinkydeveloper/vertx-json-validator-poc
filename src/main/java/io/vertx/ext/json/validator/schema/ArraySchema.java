@@ -1,9 +1,9 @@
 package io.vertx.ext.json.validator.schema;
 
-import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.ArrayList;
@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
@@ -20,13 +19,8 @@ public abstract class ArraySchema extends BaseSchema<JsonArray> {
 
     protected Function<JsonArray, Future<JsonArray>> validator;
 
-    private final static Consumer<JsonArray> UNIQUE_CHECKER = in -> {
-        if (!Utils.distinctValues(in))
-            throw ValidationExceptionFactory.generateNotMatchValidationException("Values must be distincts");
-    };
-
-    public ArraySchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public ArraySchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
         setValidator(buildSchemaValidator(), buildCheckers());
     }
 
@@ -39,7 +33,7 @@ public abstract class ArraySchema extends BaseSchema<JsonArray> {
                     .consumerToFunction(composedCheckers.get())
                     .<Future<JsonArray>>andThen(schemaValidator);
         } else {
-            validator = (schemaValidator);
+            validator = schemaValidator;
         }
     }
 
@@ -55,19 +49,23 @@ public abstract class ArraySchema extends BaseSchema<JsonArray> {
         if (maxItems != null)
             checkers.add(buildMaxItemsChecker(maxItems));
         if (uniqueItems != null && uniqueItems)
-            checkers.add(UNIQUE_CHECKER);
+            checkers.add(buildUniqueChecker(pointer));
         return checkers;
     }
 
     private Consumer<JsonArray> buildMinItemsChecker(final Integer minItems) {
         return in -> {
-            if (in.size() < minItems) throw ValidationExceptionFactory.generateNotMatchValidationException("JsonArray size should at least "+ minItems);
+            if (in.size() < minItems) throw ValidationExceptionFactory.generate(
+                    "JsonArray size should be at least "+ minItems + " while now is " + in, pointer
+            );
         };
     }
 
     private Consumer<JsonArray> buildMaxItemsChecker(final Integer maxItems) {
         return in -> {
-            if (in.size() > maxItems) throw ValidationExceptionFactory.generateNotMatchValidationException("JsonArray size should at most "+ maxItems);
+            if (in.size() > maxItems) throw ValidationExceptionFactory.generate(
+                    "JsonArray size should be at most " + maxItems + " while now is " + in, pointer
+            );
         };
     }
 
@@ -79,5 +77,12 @@ public abstract class ArraySchema extends BaseSchema<JsonArray> {
     @Override
     Future<JsonArray> validationLogic(JsonArray obj) {
         return validator.apply(obj);
+    }
+
+    private static Consumer<JsonArray> buildUniqueChecker(JsonPointer pointer) {
+        return in -> {
+            if (!Utils.distinctValues(in))
+                throw ValidationExceptionFactory.generate("Values must be distincts", in, pointer);
+        };
     }
 }

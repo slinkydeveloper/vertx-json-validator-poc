@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
@@ -18,8 +19,8 @@ public class StringSchema extends BaseSchema<String> {
 
     private Optional<Consumer<String>> checkStringProperties;
 
-    public StringSchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public StringSchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
 
         final Pattern pattern = parsePattern();
         final Integer minLength = get("minLength", Integer.class);
@@ -29,17 +30,17 @@ public class StringSchema extends BaseSchema<String> {
         if (pattern != null)
             checkers.add((value) -> {
                 if (!pattern.matcher(value).matches())
-                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should match pattern " + pattern);
+                    throw ValidationExceptionFactory.generate("String should match pattern " + pattern, value, pointer);
             });
         if (maxLength != null)
             checkers.add((value) -> {
                 if (value.codePointCount(0, value.length()) > maxLength)
-                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should have max length of " + maxLength);
+                    throw ValidationExceptionFactory.generate("String should have max length of " + maxLength, value, pointer);
             });
         if (minLength != null)
             checkers.add((value) -> {
                 if (value.codePointCount(0, value.length()) < minLength)
-                    throw ValidationExceptionFactory.generateNotMatchValidationException("String should have min length of " + minLength);
+                    throw ValidationExceptionFactory.generate("String should have min length of " + minLength, value, pointer);
             });
 
         this.checkStringProperties = Utils.composeCheckers(checkers);

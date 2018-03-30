@@ -1,6 +1,7 @@
 package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationException;
 import io.vertx.ext.json.validator.monads.ValidationStep;
 
@@ -17,11 +18,13 @@ import java.util.function.Function;
 public abstract class PreValidationSchema extends ReflectedSchema {
 
     Object defaultValue;
+    JsonPointer pointer;
 
     public <T> PreValidationSchema(JsonObject obj, SchemaParser parser, BaseSchema<T> schema) {
         super(obj, parser);
         if (getOriginalJson().containsKey("default"))
             this.setDefaultValue(schema.checkType(getOriginalJson().getValue("default")));
+        this.pointer = schema.pointer;
     }
 
     public abstract <T> Function<Object, ValidationStep<Object, T, ValidationException>> getPreValidationLogic();
@@ -34,4 +37,7 @@ public abstract class PreValidationSchema extends ReflectedSchema {
         this.defaultValue = defaultValue;
     }
 
+    public JsonPointer getPointer() {
+        return pointer;
+    }
 }

@@ -2,14 +2,15 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.schema.BaseSchema;
 
 /**
  * @author Francesco Guardiani @slinkydeveloper
  */
 public class BooleanSchema extends BaseSchema<Boolean> {
-    public BooleanSchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public BooleanSchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
     }
 
     @Override

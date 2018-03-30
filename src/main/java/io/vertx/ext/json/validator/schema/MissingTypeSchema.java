@@ -2,6 +2,7 @@ package io.vertx.ext.json.validator.schema;
 
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
 import io.vertx.ext.json.validator.ValidationException;
 
 import java.util.ArrayList;
@@ -19,12 +20,12 @@ import java.util.stream.Collectors;
 public class MissingTypeSchema extends BaseSchema<Object>{
     private List<BaseSchema> internalSchemas;
 
-    public MissingTypeSchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public MissingTypeSchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
         // Now crazy stuff happens
         internalSchemas = parser.solveMissingTypeSchemas(obj)
                 .stream()
-                .map(e -> parser.instantiateSchema(e, obj))
+                .map(e -> parser.instantiateSchema(e, obj, pointer))
                 .map(BaseSchema.class::cast)
                 .collect(Collectors.toList());
 

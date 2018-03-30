@@ -4,6 +4,8 @@ import io.vertx.core.CompositeFuture;
 import io.vertx.core.Future;
 import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
+import io.vertx.core.json.JsonPointer;
+import io.vertx.ext.json.validator.ValidationExceptionFactory;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,19 +15,19 @@ public class AllOfSchema extends BaseSchema<Object> {
     private List<BaseSchema> allOfSchemas;
     private BaseSchema mainSchema;
 
-    public AllOfSchema(JsonObject obj, SchemaParser parser) {
-        super(obj, parser);
+    public AllOfSchema(JsonObject obj, SchemaParser parser, JsonPointer pointer) {
+        super(obj, parser, pointer);
         allOfSchemas = this.<JsonArray, List<BaseSchema>>getRequired(
                 "allOf",
                 JsonArray.class,
-                in -> in.stream().map(s -> this.getParser().parse((JsonObject) s)).map(BaseSchema.class::cast).collect(Collectors.toList())
+                in -> in.stream().map(s -> this.getParser().parse((JsonObject) s, pointer)).map(BaseSchema.class::cast).collect(Collectors.toList())
         );
         JsonObject copy = obj.copy();
         copy.remove("allOf");
         copy.remove("nullable");
         copy.remove("defaultValue");
         if (copy.size() != 0)
-            mainSchema = (BaseSchema) parser.parse(copy);
+            mainSchema = (BaseSchema) parser.parse(copy, pointer);
     }
 
     @Override
@@ -54,6 +56,8 @@ public class AllOfSchema extends BaseSchema<Object> {
                                     .reduce(new JsonObject(), (j1, j2) -> j1.mergeIn(j2, true)),
                                 true);
                     else return obj;
-                });
+                }).recover(t -> Future
+                        .failedFuture(ValidationExceptionFactory.generate("All subschemas of allOf should match", obj, pointer))
+                );
     }
 }
