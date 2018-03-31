@@ -24,6 +24,7 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
                 "allOf",
                 "anyOf",
                 "default",
+                "discriminator",
                 "enum",
                 "exclusiveMaximum",
                 "exclusiveMinimum",
@@ -47,7 +48,8 @@ public class OAS3IntegrationTest extends BaseIntegrationTest {
                 "refRemote",
                 "required",
                 "type",
-                "uniqueItems"
+                "uniqueItems",
+                "xml"
         );
         return BaseIntegrationTest.buildParameters(tests, "src/test/resources/openapi3");
     }
